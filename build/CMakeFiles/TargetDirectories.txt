@@ -1,3 +1,0 @@
-/home/drakowkq/work/OOP/build/CMakeFiles/word_count.dir
-/home/drakowkq/work/OOP/build/CMakeFiles/edit_cache.dir
-/home/drakowkq/work/OOP/build/CMakeFiles/rebuild_cache.dir
