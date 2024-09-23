@@ -16,6 +16,6 @@ void Writer::writeCSV(std::ofstream& fout, std::map<std::string, int> wordFreque
         fout << word.first << "," << word.second << "," << std::fixed << std::setprecision(3) <<  (double)word.second/cntWords * PROCENT << "\n";
     }
 
-    std::cout << "writing ends complitelly";
+    std::cout << "writing ends successfully";
     return;
 }
