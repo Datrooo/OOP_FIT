@@ -5,19 +5,20 @@ int main(int argc, char * argv[]){
 
     if (argc != 3){
         std::cerr << "bad input" << std::endl;
+        return 1;
     }
 
 
     std::ifstream fin(argv[1]);    
     if (!fin.is_open()){
         std::cerr << "cant open input file" << std::endl;
-        return 0;
+        return 1;
     }
     std::ofstream fout(argv[2]);
     if (!fout.is_open()){
         std::cerr << "cant open output file" << std::endl;
         fin.close();
-        return 0;
+        return 1;
     }
     
     App proc;
