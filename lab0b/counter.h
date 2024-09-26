@@ -1,20 +1,20 @@
-#ifndef READNCOUNTER_H
-#define READNCOUNTER_H
+#ifndef COUNTER_H
+#define COUNTER_H
 
 #include <map>
 #include <string>
 
-class ReaderNCounter{
+class Counter{
     private:
         std::map<std::string, int> wordFrequency;
         std::string fixWord(std::string str);
         int cntWords = 0;
+        
     public:
-        void readNcountFrequency(std::ifstream& fin);
-        std::map<std::string, int> getFrequency();
+        void addWords(std::string& str);
         int getCntWords();
+        std::map<std::string, int> getFrequency();
+    
 };
-
-
 
 #endif

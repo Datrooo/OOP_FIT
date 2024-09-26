@@ -6,7 +6,7 @@
 #include <string>
 
 
-#define PROCENT 100
+#define PERCENT 100
 
 class Writer{
     public:

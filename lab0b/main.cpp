@@ -8,22 +8,8 @@ int main(int argc, char * argv[]){
         return 1;
     }
 
-
-    std::ifstream fin(argv[1]);    
-    if (!fin.is_open()){
-        std::cerr << "cant open input file" << std::endl;
-        return 1;
-    }
-    std::ofstream fout(argv[2]);
-    if (!fout.is_open()){
-        std::cerr << "cant open output file" << std::endl;
-        fin.close();
-        return 1;
-    }
-    
     App proc;
-    proc.process(fin, fout);
-    fin.close();
-    fout.close();
-    return 0;
+    int result = proc.process(argv[1], argv[2]);
+
+    return result;
 }
