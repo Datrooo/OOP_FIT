@@ -6,8 +6,13 @@
 #include <string>
 
 class Reader{
+    private:
+        std::ifstream fin{nullptr};
+
     public:
-        std::optional<std::string> readStr(std::ifstream& fin);
+        bool openInputFile(const std::string& fileName);
+        void closeInputFile();
+        std::optional<std::string> readStr();
 };
 
 #endif

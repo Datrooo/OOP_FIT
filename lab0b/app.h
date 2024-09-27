@@ -7,13 +7,6 @@
 #include "counter.h"
 
 class App{
-    private:
-        std::ifstream fin{nullptr};
-        std::ofstream fout{nullptr};
-        int openInputFile(const std::string& fileName);
-        int openOutputFile(const std::string& fileName);
-        void closeStreams();
-
     public:
         int process(const std::string& fileIn, const std::string& fileOut);
 

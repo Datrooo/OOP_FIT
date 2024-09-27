@@ -9,8 +9,13 @@
 #define PERCENT 100
 
 class Writer{
+    private:
+        std::ofstream fout{nullptr};
+
     public:
-        void writeCSV(std::ofstream& fout, std::map<std::string, int> wordFrequency, int cntWords);
+        bool openOutputFile(const std::string& fileName);
+        void closeOutputFile();
+        void writeCSV(std::map<std::string, int> wordFrequency, int totalNumberOfWords);
 
 };
 

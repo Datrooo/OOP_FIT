@@ -22,14 +22,14 @@ void Counter::addWords(std::string& str){
         word = fixWord(word);
         if (!word.empty()){
             wordFrequency[word]++;
-            cntWords++;
+            totalNumberOfWords++;
         }
     }
     
 }
 
-int Counter::getCntWords(){
-    return cntWords;
+int Counter::getTotalNumberOfWords(){
+    return totalNumberOfWords;
 }
 
 std::map<std::string, int> Counter::getFrequency(){
