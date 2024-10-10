@@ -17,7 +17,7 @@ BitArray::BitArray(int numBits, unsigned long value)
     int minSize = std::min(numBits, bitsPerBlock);
     for (int i = 0; i < minSize; ++i){
         if (value & (1UL <<  i)){
-            set(minSize - i - 1, true);
+            set(i, true);
         }
     }
 
@@ -59,7 +59,8 @@ void BitArray::resize(int numBits, bool value){
     sizeOfBuf = numBits;
 
     if (diff > 0){
-        for(int i = sizeOfBuf - diff; i < numBits; ++i){
+        (*this) >>= diff;
+        for(int i = numBits - diff; i < numBits; ++i){
             set(i, value);
         }
     }
@@ -126,10 +127,10 @@ BitArray& BitArray::operator<<=(int n){
     }
 
     for (int i = 0; i < sizeOfBuf - n; ++i){
-        set(i, (*this)[i+n]);
+        set(sizeOfBuf - i - 1, (*this)[sizeOfBuf - 1 - n - i]);
     }
 
-    for (int i = sizeOfBuf - n; i < sizeOfBuf; ++i){
+    for (int i = n - 1; i >= 0; --i){
         set(i, false);
     }
     return *this;
@@ -147,11 +148,11 @@ BitArray& BitArray::operator>>=(int n){
         return *this;
     }
 
-    for (int i = sizeOfBuf - 1; i > n; --i){
-        set(i, (*this)[i-n]);
+    for (int i = 0; i < sizeOfBuf - n; ++i){
+        set(i, (*this)[i+n]);
     }
 
-    for (int i = 0; i < n; ++i){
+    for (int i = sizeOfBuf - 1; i > sizeOfBuf - n - 1 ; --i){
         set(i, false);
     }
 
@@ -176,10 +177,10 @@ BitArray& BitArray::set(int n, bool val){
         throw std::invalid_argument("index out of range" );
     }
     if (val){
-        bits[n / bitsPerBlock] |= (1UL << (n % bitsPerBlock));
+        bits[(sizeOfBuf - n) / bitsPerBlock] |= (1UL << ((sizeOfBuf - n -1) % bitsPerBlock));
     }
     else{
-        bits[n / bitsPerBlock] &= ~(1UL << (n % bitsPerBlock));
+        bits[(sizeOfBuf - n) / bitsPerBlock] &= ~(1UL << ((sizeOfBuf - n - 1) % bitsPerBlock));
     }
     return *this;
 }
@@ -233,7 +234,7 @@ bool BitArray::operator[](int i) const{
         throw std::invalid_argument("index out of range" );
     }
 
-    return (bits[i / bitsPerBlock] >> (i % bitsPerBlock)) & 1;
+    return (bits[(sizeOfBuf - i) / bitsPerBlock] >> ((sizeOfBuf - i - 1) % bitsPerBlock)) & 1;
 }
 
 int BitArray::size() const{
@@ -247,7 +248,7 @@ bool BitArray::empty() const{
 std::string BitArray::toString() const{
     std::string str;
     for (int i = 0; i < sizeOfBuf; ++i){
-        str += std::to_string((*this)[i]);
+        str += std::to_string((*this)[sizeOfBuf - i - 1]);
     }
     return str;
 }

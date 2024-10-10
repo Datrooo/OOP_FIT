@@ -3,7 +3,6 @@
 #include <gtest/gtest.h>
 #include "bitArray.h"
 
-
 TEST(BitArrayTest, DefaultConstructor){
   BitArray a1;
   ASSERT_EQ(a1.size(), 0);
@@ -21,12 +20,11 @@ TEST(BitArrayTest, ConstructorWithSizeWithoutValue){
 }
 
 TEST(BitArrayTest, ConstructorWithSizeAndValue){
-  BitArray a1(8, 3UL);
+  BitArray a1(8, 1UL);
   ASSERT_EQ(a1.size(), 8);
   ASSERT_FALSE(a1.empty());
-  ASSERT_EQ(a1.count(), 2);
-  ASSERT_EQ(a1.size(), std::min(a1.size(), 64));
-  ASSERT_EQ(a1.toString(), "00000011");
+  ASSERT_EQ(a1.count(), 1);
+  ASSERT_EQ(a1.toString(), "00000001");
 }
 
 TEST(BitArrayTest, ConstructorCopy){
@@ -73,9 +71,9 @@ TEST(BitArrayTest, CheckResizeWithoutValue){
   a1.resize(4);
   ASSERT_EQ(a1.toString(),  "0011");
   ASSERT_EQ(a1.size(), 4);
-  a1.resize(8);
-  ASSERT_EQ(a1.toString(), "00110000");
-  ASSERT_EQ(a1.size(), 8);
+  a1.resize(9);
+  ASSERT_EQ(a1.toString(), "000000011");
+  ASSERT_EQ(a1.size(), 9);
 }
  
 TEST(BitArrayTest, CheckResizeWithValue){
@@ -84,7 +82,7 @@ TEST(BitArrayTest, CheckResizeWithValue){
   ASSERT_EQ(a1.toString(),  "0011");
   ASSERT_EQ(a1.size(), 4);
   a1.resize(8, true);
-  ASSERT_EQ(a1.toString(), "00111111");
+  ASSERT_EQ(a1.toString(), "11110011");
   ASSERT_EQ(a1.size(), 8);
 }
 TEST(BitArrayTest, CheckResizeWithInvalidSize){
@@ -104,7 +102,7 @@ TEST(BitArrayTest, CheckPushBack){
   a1.pushBack(true);
   a1.pushBack(false);
   ASSERT_EQ(a1.size(), 10);
-  ASSERT_EQ(a1.toString(), "0000001110");
+  ASSERT_EQ(a1.toString(), "0100000011");
 }
 
 TEST(BitArrayTest, CheckANDAssignInvalidArgument) {
@@ -211,7 +209,7 @@ TEST(BitArrayTest, CheckSetOne){
   a1.set(1);
   a1.set(2, false);
   a1.set(3, true);
-  ASSERT_EQ(a1.toString(), "01010000");
+  ASSERT_EQ(a1.toString(), "00001010");
 }
 
 TEST(BitArrayTest, CheckSetAll){
@@ -232,7 +230,7 @@ TEST(BitArrayTest, CheckResetOne){
   a1.set();
   a1.reset(1);
   a1.reset(3);
-  ASSERT_EQ(a1.toString(), "10101111");
+  ASSERT_EQ(a1.toString(), "11110101");
 }
 
 TEST(BitArrayTest, CheckResetAll){
@@ -283,11 +281,11 @@ TEST(BitArrayTest, CheckCount){
 
 TEST(BitArrayTest, CheckIndex){
   BitArray a1(5, 3);
-  ASSERT_EQ(a1[0],  false);
-  ASSERT_EQ(a1[1],  false);
+  ASSERT_EQ(a1[0],  true);
+  ASSERT_EQ(a1[1],  true);
   ASSERT_EQ(a1[2],  false);
-  ASSERT_EQ(a1[3],  true);
-  ASSERT_EQ(a1[4],  true);
+  ASSERT_EQ(a1[3],  false);
+  ASSERT_EQ(a1[4],  false);
 }
 
 TEST(BitArrayTest, CheckSize){
