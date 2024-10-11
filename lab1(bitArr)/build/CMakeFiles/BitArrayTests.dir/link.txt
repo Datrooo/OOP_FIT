@@ -1,1 +1,0 @@
-/usr/bin/c++  -Wall CMakeFiles/BitArrayTests.dir/lab1_tests.cpp.o CMakeFiles/BitArrayTests.dir/bitArray.cpp.o -o BitArrayTests  /usr/lib/x86_64-linux-gnu/libgtest.a -lpthread 

@@ -1,4 +1,0 @@
-/home/drakowkq/work/OOP_FIT/lab1(bitArr)/build/CMakeFiles/BitArray.dir
-/home/drakowkq/work/OOP_FIT/lab1(bitArr)/build/CMakeFiles/BitArrayTests.dir
-/home/drakowkq/work/OOP_FIT/lab1(bitArr)/build/CMakeFiles/edit_cache.dir
-/home/drakowkq/work/OOP_FIT/lab1(bitArr)/build/CMakeFiles/rebuild_cache.dir
