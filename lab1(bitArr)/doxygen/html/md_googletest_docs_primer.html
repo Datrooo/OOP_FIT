@@ -115,7 +115,7 @@ Assertions</h1>
 <div class="line">  EXPECT_EQ(x[i], y[i]) &lt;&lt; &quot;Vectors x and y differ at index &quot; &lt;&lt; i;</div>
 <div class="line">}</div>
 </div><!-- fragment --><p>Anything that can be streamed to an <code>ostream</code> can be streamed to an assertion macro&ndash;in particular, C strings and <code>string</code> objects. If a wide string (<code>wchar_t*</code>, <code>TCHAR*</code> in <code>UNICODE</code> mode on Windows, or <code>std::wstring</code>) is streamed to an assertion, it will be translated to UTF-8 when printed.</p>
-<p>GoogleTest provides a collection of assertions for verifying the behavior of your code in various ways. You can check Boolean conditions, compare values based on relational operators, verify string values, floating-point values, and much more. There are even assertions that enable you to verify more complex states by providing custom predicates. For the complete list of assertions provided by GoogleTest, see the /home/drakowkq/work/labs/lab1(bitArr)/googletest/docs/reference/assertions.md "Assertions Reference".</p>
+<p>GoogleTest provides a collection of assertions for verifying the behavior of your code in various ways. You can check Boolean conditions, compare values based on relational operators, verify string values, floating-point values, and much more. There are even assertions that enable you to verify more complex states by providing custom predicates. For the complete list of assertions provided by GoogleTest, see the /home/drakowkq/work/OOP_FIT/lab1(bitArr)/googletest/docs/reference/assertions.md "Assertions Reference".</p>
 <h1><a class="anchor" id="autotoc_md229"></a>
 Simple Tests</h1>
 <p>To create a test:</p>
@@ -318,7 +318,7 @@ Writing the main() Function</h1>
 <div class="line">  ::testing::InitGoogleTest(&amp;argc, argv);</div>
 <div class="line">  return RUN_ALL_TESTS();</div>
 <div class="line">}</div>
-</div><!-- fragment --><p>The <code>::testing::InitGoogleTest()</code> function parses the command line for googletest flags, and removes all recognized flags. This allows the user to control a test program's behavior via various flags, which we'll cover in the /home/drakowkq/work/labs/lab1(bitArr)/googletest/docs/advanced.md "AdvancedGuide". You <b>must</b> call this function before calling <code>RUN_ALL_TESTS()</code>, or the flags won't be properly initialized.</p>
+</div><!-- fragment --><p>The <code>::testing::InitGoogleTest()</code> function parses the command line for googletest flags, and removes all recognized flags. This allows the user to control a test program's behavior via various flags, which we'll cover in the /home/drakowkq/work/OOP_FIT/lab1(bitArr)/googletest/docs/advanced.md "AdvancedGuide". You <b>must</b> call this function before calling <code>RUN_ALL_TESTS()</code>, or the flags won't be properly initialized.</p>
 <p>On Windows, <code>InitGoogleTest()</code> also works with wide strings, so it can be used in programs compiled in <code>UNICODE</code> mode as well.</p>
 <p>But maybe you think that writing all those <code>main</code> functions is too much work? We agree with you completely, and that's why Google Test provides a basic implementation of main(). If it fits your needs, then just link your test with the <code>gtest_main</code> library and you are good to go.</p>
 <p>{: .callout .note} NOTE: <code>ParseGUnitFlags()</code> is deprecated in favor of <code>InitGoogleTest()</code>.</p>

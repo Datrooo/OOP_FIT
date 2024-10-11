@@ -1,4 +1,4 @@
-# Install script for directory: /home/drakowkq/work/labs/lab1(bitArr)
+# Install script for directory: /home/drakowkq/work/OOP_FIT/lab1(bitArr)
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/drakowkq/work/labs/lab1(bitArr)/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/drakowkq/work/OOP_FIT/lab1(bitArr)/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -104,11 +104,11 @@ ADD_FAILURE_AT</h2>
 <p>Generates a nonfatal failure at the file and line number specified.</p>
 <h1><a class="anchor" id="generalized"></a>
 Generalized Assertion</h1>
-<p>The following assertion allows /home/drakowkq/work/labs/lab1(bitArr)/googletest/docs/reference/matchers.md "matchers" to be used to verify values.</p>
+<p>The following assertion allows /home/drakowkq/work/OOP_FIT/lab1(bitArr)/googletest/docs/reference/matchers.md "matchers" to be used to verify values.</p>
 <h2><a class="anchor" id="EXPECT_THAT"></a>
 EXPECT_THAT</h2>
 <p><code>EXPECT_THAT(</code>*<code>value</code>*<code>,</code>*<code>matcher</code>*<code>)</code> \ <code>ASSERT_THAT(</code>*<code>value</code>*<code>,</code>*<code>matcher</code>*<code>)</code></p>
-<p>Verifies that *<code>value</code>* matches the /home/drakowkq/work/labs/lab1(bitArr)/googletest/docs/reference/matchers.md "matcher" *<code>matcher</code>*.</p>
+<p>Verifies that *<code>value</code>* matches the /home/drakowkq/work/OOP_FIT/lab1(bitArr)/googletest/docs/reference/matchers.md "matcher" *<code>matcher</code>*.</p>
 <p>For example, the following code verifies that the string <code>value1</code> starts with <code>"Hello"</code>, <code>value2</code> matches a regular expression, and <code>value3</code> is between 5 and 10:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;gmock/gmock.h&quot;</span></div>
 <div class="line"> </div>
@@ -126,7 +126,7 @@ EXPECT_THAT</h2>
 <div class="fragment"><div class="line">Value of: value1</div>
 <div class="line">  Actual: &quot;Hi, world!&quot;</div>
 <div class="line">Expected: starts with &quot;Hello&quot;</div>
-</div><!-- fragment --><p>GoogleTest provides a built-in library of matchers—see the /home/drakowkq/work/labs/lab1(bitArr)/googletest/docs/reference/matchers.md "Matchers Reference". It is also possible to write your own matchers—see <a href="../gmock_cook_book.md#NewMatchers">Writing New Matchers Quickly</a>. The use of matchers makes <code>EXPECT_THAT</code> a powerful, extensible assertion.</p>
+</div><!-- fragment --><p>GoogleTest provides a built-in library of matchers—see the /home/drakowkq/work/OOP_FIT/lab1(bitArr)/googletest/docs/reference/matchers.md "Matchers Reference". It is also possible to write your own matchers—see <a href="../gmock_cook_book.md#NewMatchers">Writing New Matchers Quickly</a>. The use of matchers makes <code>EXPECT_THAT</code> a powerful, extensible assertion.</p>
 <p><em>The idea for this assertion was borrowed from Joe Walnes' Hamcrest project, which adds <code>assertThat()</code> to JUnit.</em></p>
 <h1><a class="anchor" id="boolean"></a>
 Boolean Conditions</h1>
@@ -351,7 +351,7 @@ Death Assertions</h1>
 EXPECT_DEATH</h2>
 <p><code>EXPECT_DEATH(</code>*<code>statement</code>*<code>,</code>*<code>matcher</code>*<code>)</code> \ <code>ASSERT_DEATH(</code>*<code>statement</code>*<code>,</code>*<code>matcher</code>*<code>)</code></p>
 <p>Verifies that *<code>statement</code>* causes the process to terminate with a nonzero exit status and produces <code>stderr</code> output that matches *<code>matcher</code>*.</p>
-<p>The parameter *<code>matcher</code>* is either a /home/drakowkq/work/labs/lab1(bitArr)/googletest/docs/reference/matchers.md "matcher" for a <code>const std::string&amp;</code>, or a regular expression (see <a href="../advanced.md#regular-expression-syntax">Regular Expression Syntax</a>)—a bare string *<code>s</code>* (with no matcher) is treated as <a href="matchers.md#string-matchers"><code>ContainsRegex(s)</code></a>, <b>not</b> <a href="matchers.md#generic-comparison"><code>Eq(s)</code></a>.</p>
+<p>The parameter *<code>matcher</code>* is either a /home/drakowkq/work/OOP_FIT/lab1(bitArr)/googletest/docs/reference/matchers.md "matcher" for a <code>const std::string&amp;</code>, or a regular expression (see <a href="../advanced.md#regular-expression-syntax">Regular Expression Syntax</a>)—a bare string *<code>s</code>* (with no matcher) is treated as <a href="matchers.md#string-matchers"><code>ContainsRegex(s)</code></a>, <b>not</b> <a href="matchers.md#generic-comparison"><code>Eq(s)</code></a>.</p>
 <p>For example, the following code verifies that calling <code>DoSomething(42)</code> causes the process to die with an error message that contains the text <code>My error</code>:</p>
 <div class="fragment"><div class="line">EXPECT_DEATH(DoSomething(42), <span class="stringliteral">&quot;My error&quot;</span>);</div>
 </div><!-- fragment --><h2><a class="anchor" id="EXPECT_DEATH_IF_SUPPORTED"></a>
@@ -373,7 +373,7 @@ EXPECT_EXIT</h2>
 <div class="line"><span class="comment">// Returns true if the program was killed by the given signal.</span></div>
 <div class="line"><span class="comment">// Not available on Windows.</span></div>
 <div class="line">::testing::KilledBySignal(signal_number);</div>
-</div><!-- fragment --><p>The parameter *<code>matcher</code>* is either a /home/drakowkq/work/labs/lab1(bitArr)/googletest/docs/reference/matchers.md "matcher" for a <code>const std::string&amp;</code>, or a regular expression (see <a href="../advanced.md#regular-expression-syntax">Regular Expression Syntax</a>)—a bare string *<code>s</code>* (with no matcher) is treated as <a href="matchers.md#string-matchers"><code>ContainsRegex(s)</code></a>, <b>not</b> <a href="matchers.md#generic-comparison"><code>Eq(s)</code></a>.</p>
+</div><!-- fragment --><p>The parameter *<code>matcher</code>* is either a /home/drakowkq/work/OOP_FIT/lab1(bitArr)/googletest/docs/reference/matchers.md "matcher" for a <code>const std::string&amp;</code>, or a regular expression (see <a href="../advanced.md#regular-expression-syntax">Regular Expression Syntax</a>)—a bare string *<code>s</code>* (with no matcher) is treated as <a href="matchers.md#string-matchers"><code>ContainsRegex(s)</code></a>, <b>not</b> <a href="matchers.md#generic-comparison"><code>Eq(s)</code></a>.</p>
 <p>For example, the following code verifies that calling <code>NormalExit()</code> causes the process to print a message containing the text <code>Success</code> to <code>stderr</code> and exit with exit status code 0:</p>
 <div class="fragment"><div class="line">EXPECT_EXIT(NormalExit(), testing::ExitedWithCode(0), <span class="stringliteral">&quot;Success&quot;</span>);</div>
 </div><!-- fragment --> </div></div><!-- contents -->

@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I"/home/drakowkq/work/labs/lab1(bitArr)/include"
+CXX_INCLUDES = -I"/home/drakowkq/work/OOP_FIT/lab1(bitArr)/include"
 
 CXX_FLAGS =  -Wall -std=gnu++17
 

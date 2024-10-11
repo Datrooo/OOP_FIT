@@ -1,4 +1,4 @@
-You can find recipes for using g\+Mock here. If you haven\textquotesingle{}t yet, please read /home/drakowkq/work/labs/lab1(bit\+Arr)/googletest/docs/gmock\+\_\+for\+\_\+dummies.md \char`\"{}the dummy guide\char`\"{} first to make sure you understand the basics.
+You can find recipes for using g\+Mock here. If you haven\textquotesingle{}t yet, please read /home/drakowkq/work/\+OOP\+\_\+\+FIT/lab1(bit\+Arr)/googletest/docs/gmock\+\_\+for\+\_\+dummies.md \char`\"{}the dummy guide\char`\"{} first to make sure you understand the basics.
 
 \{\+: .callout .note\} {\bfseries{Note\+:}} g\+Mock lives in the {\ttfamily testing} name space. For readability, it is recommended to write {\ttfamily using \+::testing\+::\+Foo;} once in your file before using the name {\ttfamily Foo} defined by g\+Mock. We omit such {\ttfamily using} statements in this section for brevity, but you should do it in your own code.\hypertarget{md_googletest_docs_gmock_cook_book_autotoc_md119}{}\doxysection{Creating Mock Classes}\label{md_googletest_docs_gmock_cook_book_autotoc_md119}
 \mbox{\hyperlink{classMock}{Mock}} classes are defined as normal classes, using the {\ttfamily MOCK\+\_\+\+METHOD} macro to generate mocked methods. The macro gets 3 or 4 parameters\+:
@@ -946,7 +946,7 @@ Since you can build complex matchers from simpler ones easily using g\+Mock, thi
 \end{DoxyCode}
 \hypertarget{md_googletest_docs_gmock_cook_book_autotoc_md135}{}\doxysubsection{Using Matchers in googletest Assertions}\label{md_googletest_docs_gmock_cook_book_autotoc_md135}
 See \href{reference/assertions.md\#EXPECT_THAT}{\texttt{ {\ttfamily EXPECT\+\_\+\+THAT}}} in the Assertions Reference.\hypertarget{md_googletest_docs_gmock_cook_book_autotoc_md136}{}\doxysubsection{Using Predicates as Matchers}\label{md_googletest_docs_gmock_cook_book_autotoc_md136}
-g\+Mock provides a set of built-\/in matchers for matching arguments with expected values—see the /home/drakowkq/work/labs/lab1(bit\+Arr)/googletest/docs/reference/matchers.md \char`\"{}\+Matchers Reference\char`\"{} for more information. In case you find the built-\/in set lacking, you can use an arbitrary unary predicate function or functor as a matcher -\/ as long as the predicate accepts a value of the type you want. You do this by wrapping the predicate inside the {\ttfamily Truly()} function, for example\+:
+g\+Mock provides a set of built-\/in matchers for matching arguments with expected values—see the /home/drakowkq/work/\+OOP\+\_\+\+FIT/lab1(bit\+Arr)/googletest/docs/reference/matchers.md \char`\"{}\+Matchers Reference\char`\"{} for more information. In case you find the built-\/in set lacking, you can use an arbitrary unary predicate function or functor as a matcher -\/ as long as the predicate accepts a value of the type you want. You do this by wrapping the predicate inside the {\ttfamily Truly()} function, for example\+:
 
 
 \begin{DoxyCode}{0}

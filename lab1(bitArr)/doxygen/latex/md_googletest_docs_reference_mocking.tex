@@ -53,7 +53,7 @@ Note that commas in arguments prevent {\ttfamily MOCK\+\_\+\+METHOD} from parsin
 
 Creates an \href{../gmock_for_dummies.md\#setting-expectations}{\texttt{ expectation}} that the method $\ast${\ttfamily method\+\_\+name}$\ast$ of the object $\ast${\ttfamily mock\+\_\+object}$\ast$ is called with arguments that match the given matchers $\ast${\ttfamily matchers...}$\ast$. {\ttfamily EXPECT\+\_\+\+CALL} must precede any code that exercises the mock object.
 
-The parameter $\ast${\ttfamily matchers...}$\ast$ is a comma-\/separated list of \href{../gmock_for_dummies.md\#matchers-what-arguments-do-we-expect}{\texttt{ matchers}} that correspond to each argument of the method $\ast${\ttfamily method\+\_\+name}$\ast$. The expectation will apply only to calls of $\ast${\ttfamily method\+\_\+name}$\ast$ whose arguments match all of the matchers. If {\ttfamily (}$\ast${\ttfamily matchers...}$\ast${\ttfamily )} is omitted, the expectation behaves as if each argument\textquotesingle{}s matcher were a \href{matchers.md\#wildcard}{\texttt{ wildcard matcher ({\ttfamily \+\_\+})}}. See the /home/drakowkq/work/labs/lab1(bit\+Arr)/googletest/docs/reference/matchers.md \char`\"{}\+Matchers Reference\char`\"{} for a list of all built-\/in matchers.
+The parameter $\ast${\ttfamily matchers...}$\ast$ is a comma-\/separated list of \href{../gmock_for_dummies.md\#matchers-what-arguments-do-we-expect}{\texttt{ matchers}} that correspond to each argument of the method $\ast${\ttfamily method\+\_\+name}$\ast$. The expectation will apply only to calls of $\ast${\ttfamily method\+\_\+name}$\ast$ whose arguments match all of the matchers. If {\ttfamily (}$\ast${\ttfamily matchers...}$\ast${\ttfamily )} is omitted, the expectation behaves as if each argument\textquotesingle{}s matcher were a \href{matchers.md\#wildcard}{\texttt{ wildcard matcher ({\ttfamily \+\_\+})}}. See the /home/drakowkq/work/\+OOP\+\_\+\+FIT/lab1(bit\+Arr)/googletest/docs/reference/matchers.md \char`\"{}\+Matchers Reference\char`\"{} for a list of all built-\/in matchers.
 
 The following chainable clauses can be used to modify the expectation, and they must be used in the following order\+:
 
@@ -196,7 +196,7 @@ The {\ttfamily After} clause can be used any number of times on an expectation.\
 
 Specifies the mock function\textquotesingle{}s actual behavior when invoked, for a single matching function call.
 
-The parameter $\ast${\ttfamily action}$\ast$ represents the \href{../gmock_for_dummies.md\#actions-what-should-it-do}{\texttt{ action}} that the function call will perform. See the /home/drakowkq/work/labs/lab1(bit\+Arr)/googletest/docs/reference/actions.md \char`\"{}\+Actions Reference\char`\"{} for a list of built-\/in actions.
+The parameter $\ast${\ttfamily action}$\ast$ represents the \href{../gmock_for_dummies.md\#actions-what-should-it-do}{\texttt{ action}} that the function call will perform. See the /home/drakowkq/work/\+OOP\+\_\+\+FIT/lab1(bit\+Arr)/googletest/docs/reference/actions.md \char`\"{}\+Actions Reference\char`\"{} for a list of built-\/in actions.
 
 The use of {\ttfamily Will\+Once} implicitly sets a cardinality on the expectation when {\ttfamily Times} is not specified. See \href{\#EXPECT_CALL.Times}{\texttt{ {\ttfamily Times}}}.
 
@@ -219,7 +219,7 @@ The {\ttfamily Will\+Once} clause can be used any number of times on an expectat
 
 Specifies the mock function\textquotesingle{}s actual behavior when invoked, for all subsequent matching function calls. Takes effect after the actions specified in the \href{\#EXPECT_CALL.WillOnce}{\texttt{ {\ttfamily Will\+Once}}} clauses, if any, have been performed.
 
-The parameter $\ast${\ttfamily action}$\ast$ represents the \href{../gmock_for_dummies.md\#actions-what-should-it-do}{\texttt{ action}} that the function call will perform. See the /home/drakowkq/work/labs/lab1(bit\+Arr)/googletest/docs/reference/actions.md \char`\"{}\+Actions Reference\char`\"{} for a list of built-\/in actions.
+The parameter $\ast${\ttfamily action}$\ast$ represents the \href{../gmock_for_dummies.md\#actions-what-should-it-do}{\texttt{ action}} that the function call will perform. See the /home/drakowkq/work/\+OOP\+\_\+\+FIT/lab1(bit\+Arr)/googletest/docs/reference/actions.md \char`\"{}\+Actions Reference\char`\"{} for a list of built-\/in actions.
 
 The use of {\ttfamily Will\+Repeatedly} implicitly sets a cardinality on the expectation when {\ttfamily Times} is not specified. See \href{\#EXPECT_CALL.Times}{\texttt{ {\ttfamily Times}}}.
 
@@ -267,7 +267,7 @@ The {\ttfamily Retires\+On\+Saturation} clause can be used at most once on an ex
 
 Defines what happens when the method $\ast${\ttfamily method\+\_\+name}$\ast$ of the object $\ast${\ttfamily mock\+\_\+object}$\ast$ is called with arguments that match the given matchers $\ast${\ttfamily matchers...}$\ast$. Requires a modifier clause to specify the method\textquotesingle{}s behavior. {\itshape Does not} set any expectations that the method will be called.
 
-The parameter $\ast${\ttfamily matchers...}$\ast$ is a comma-\/separated list of \href{../gmock_for_dummies.md\#matchers-what-arguments-do-we-expect}{\texttt{ matchers}} that correspond to each argument of the method $\ast${\ttfamily method\+\_\+name}$\ast$. The {\ttfamily ON\+\_\+\+CALL} specification will apply only to calls of $\ast${\ttfamily method\+\_\+name}$\ast$ whose arguments match all of the matchers. If {\ttfamily (}$\ast${\ttfamily matchers...}$\ast${\ttfamily )} is omitted, the behavior is as if each argument\textquotesingle{}s matcher were a \href{matchers.md\#wildcard}{\texttt{ wildcard matcher ({\ttfamily \+\_\+})}}. See the /home/drakowkq/work/labs/lab1(bit\+Arr)/googletest/docs/reference/matchers.md \char`\"{}\+Matchers Reference\char`\"{} for a list of all built-\/in matchers.
+The parameter $\ast${\ttfamily matchers...}$\ast$ is a comma-\/separated list of \href{../gmock_for_dummies.md\#matchers-what-arguments-do-we-expect}{\texttt{ matchers}} that correspond to each argument of the method $\ast${\ttfamily method\+\_\+name}$\ast$. The {\ttfamily ON\+\_\+\+CALL} specification will apply only to calls of $\ast${\ttfamily method\+\_\+name}$\ast$ whose arguments match all of the matchers. If {\ttfamily (}$\ast${\ttfamily matchers...}$\ast${\ttfamily )} is omitted, the behavior is as if each argument\textquotesingle{}s matcher were a \href{matchers.md\#wildcard}{\texttt{ wildcard matcher ({\ttfamily \+\_\+})}}. See the /home/drakowkq/work/\+OOP\+\_\+\+FIT/lab1(bit\+Arr)/googletest/docs/reference/matchers.md \char`\"{}\+Matchers Reference\char`\"{} for a list of all built-\/in matchers.
 
 The following chainable clauses can be used to set the method\textquotesingle{}s behavior, and they must be used in the following order\+:
 
@@ -309,7 +309,7 @@ The {\ttfamily With} clause can be used at most once with each {\ttfamily ON\+\_
 
 Specifies the default behavior of a matching mock function call.
 
-The parameter $\ast${\ttfamily action}$\ast$ represents the \href{../gmock_for_dummies.md\#actions-what-should-it-do}{\texttt{ action}} that the function call will perform. See the /home/drakowkq/work/labs/lab1(bit\+Arr)/googletest/docs/reference/actions.md \char`\"{}\+Actions Reference\char`\"{} for a list of built-\/in actions.
+The parameter $\ast${\ttfamily action}$\ast$ represents the \href{../gmock_for_dummies.md\#actions-what-should-it-do}{\texttt{ action}} that the function call will perform. See the /home/drakowkq/work/\+OOP\+\_\+\+FIT/lab1(bit\+Arr)/googletest/docs/reference/actions.md \char`\"{}\+Actions Reference\char`\"{} for a list of built-\/in actions.
 
 For example, the following code specifies that by default, a call to {\ttfamily my\+\_\+mock.\+Greet()} will return {\ttfamily \char`\"{}hello\char`\"{}}\+:
 

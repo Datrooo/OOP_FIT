@@ -112,7 +112,7 @@ MOCK_METHOD</h2>
 EXPECT_CALL</h2>
 <p><code>EXPECT_CALL(</code>*<code>mock_object</code>*<code>,</code>*<code>method_name</code>*<code>(</code>*<code>matchers...</code>*<code>))</code></p>
 <p>Creates an <a href="../gmock_for_dummies.md#setting-expectations">expectation</a> that the method *<code>method_name</code>* of the object *<code>mock_object</code>* is called with arguments that match the given matchers *<code>matchers...</code>*. <code>EXPECT_CALL</code> must precede any code that exercises the mock object.</p>
-<p>The parameter *<code>matchers...</code>* is a comma-separated list of <a href="../gmock_for_dummies.md#matchers-what-arguments-do-we-expect">matchers</a> that correspond to each argument of the method *<code>method_name</code>*. The expectation will apply only to calls of *<code>method_name</code>* whose arguments match all of the matchers. If <code>(</code>*<code>matchers...</code>*<code>)</code> is omitted, the expectation behaves as if each argument's matcher were a <a href="matchers.md#wildcard">wildcard matcher (<code>_</code>)</a>. See the /home/drakowkq/work/labs/lab1(bitArr)/googletest/docs/reference/matchers.md "Matchers Reference" for a list of all built-in matchers.</p>
+<p>The parameter *<code>matchers...</code>* is a comma-separated list of <a href="../gmock_for_dummies.md#matchers-what-arguments-do-we-expect">matchers</a> that correspond to each argument of the method *<code>method_name</code>*. The expectation will apply only to calls of *<code>method_name</code>* whose arguments match all of the matchers. If <code>(</code>*<code>matchers...</code>*<code>)</code> is omitted, the expectation behaves as if each argument's matcher were a <a href="matchers.md#wildcard">wildcard matcher (<code>_</code>)</a>. See the /home/drakowkq/work/OOP_FIT/lab1(bitArr)/googletest/docs/reference/matchers.md "Matchers Reference" for a list of all built-in matchers.</p>
 <p>The following chainable clauses can be used to modify the expectation, and they must be used in the following order:</p>
 <div class="fragment"><div class="line">EXPECT_CALL(mock_object, method_name(matchers...))</div>
 <div class="line">    .With(multi_argument_matcher)  <span class="comment">// Can be used at most once</span></div>
@@ -206,7 +206,7 @@ After {#EXPECT_CALL.After}</h3>
 WillOnce {#EXPECT_CALL.WillOnce}</h3>
 <p><code>.WillOnce(</code>*<code>action</code>*<code>)</code></p>
 <p>Specifies the mock function's actual behavior when invoked, for a single matching function call.</p>
-<p>The parameter *<code>action</code>* represents the <a href="../gmock_for_dummies.md#actions-what-should-it-do">action</a> that the function call will perform. See the /home/drakowkq/work/labs/lab1(bitArr)/googletest/docs/reference/actions.md "Actions Reference" for a list of built-in actions.</p>
+<p>The parameter *<code>action</code>* represents the <a href="../gmock_for_dummies.md#actions-what-should-it-do">action</a> that the function call will perform. See the /home/drakowkq/work/OOP_FIT/lab1(bitArr)/googletest/docs/reference/actions.md "Actions Reference" for a list of built-in actions.</p>
 <p>The use of <code>WillOnce</code> implicitly sets a cardinality on the expectation when <code>Times</code> is not specified. See <a href="#EXPECT_CALL.Times"><code>Times</code></a>.</p>
 <p>Each matching function call will perform the next action in the order declared. For example, the following code specifies that <code>my_mock.GetNumber()</code> is expected to be called exactly 3 times and will return <code>1</code>, <code>2</code>, and <code>3</code> respectively on the first, second, and third calls:</p>
 <div class="fragment"><div class="line">using ::testing::Return;</div>
@@ -220,7 +220,7 @@ WillOnce {#EXPECT_CALL.WillOnce}</h3>
 WillRepeatedly {#EXPECT_CALL.WillRepeatedly}</h3>
 <p><code>.WillRepeatedly(</code>*<code>action</code>*<code>)</code></p>
 <p>Specifies the mock function's actual behavior when invoked, for all subsequent matching function calls. Takes effect after the actions specified in the <a href="#EXPECT_CALL.WillOnce"><code>WillOnce</code></a> clauses, if any, have been performed.</p>
-<p>The parameter *<code>action</code>* represents the <a href="../gmock_for_dummies.md#actions-what-should-it-do">action</a> that the function call will perform. See the /home/drakowkq/work/labs/lab1(bitArr)/googletest/docs/reference/actions.md "Actions Reference" for a list of built-in actions.</p>
+<p>The parameter *<code>action</code>* represents the <a href="../gmock_for_dummies.md#actions-what-should-it-do">action</a> that the function call will perform. See the /home/drakowkq/work/OOP_FIT/lab1(bitArr)/googletest/docs/reference/actions.md "Actions Reference" for a list of built-in actions.</p>
 <p>The use of <code>WillRepeatedly</code> implicitly sets a cardinality on the expectation when <code>Times</code> is not specified. See <a href="#EXPECT_CALL.Times"><code>Times</code></a>.</p>
 <p>If any <code>WillOnce</code> clauses have been specified, matching function calls will perform those actions before the action specified by <code>WillRepeatedly</code>. See the following example:</p>
 <div class="fragment"><div class="line">using ::testing::Return;</div>
@@ -251,7 +251,7 @@ RetiresOnSaturation {#EXPECT_CALL.RetiresOnSaturation}</h3>
 ON_CALL</h2>
 <p><code>ON_CALL(</code>*<code>mock_object</code>*<code>,</code>*<code>method_name</code>*<code>(</code>*<code>matchers...</code>*<code>))</code></p>
 <p>Defines what happens when the method *<code>method_name</code>* of the object *<code>mock_object</code>* is called with arguments that match the given matchers *<code>matchers...</code>*. Requires a modifier clause to specify the method's behavior. <em>Does not</em> set any expectations that the method will be called.</p>
-<p>The parameter *<code>matchers...</code>* is a comma-separated list of <a href="../gmock_for_dummies.md#matchers-what-arguments-do-we-expect">matchers</a> that correspond to each argument of the method *<code>method_name</code>*. The <code>ON_CALL</code> specification will apply only to calls of *<code>method_name</code>* whose arguments match all of the matchers. If <code>(</code>*<code>matchers...</code>*<code>)</code> is omitted, the behavior is as if each argument's matcher were a <a href="matchers.md#wildcard">wildcard matcher (<code>_</code>)</a>. See the /home/drakowkq/work/labs/lab1(bitArr)/googletest/docs/reference/matchers.md "Matchers Reference" for a list of all built-in matchers.</p>
+<p>The parameter *<code>matchers...</code>* is a comma-separated list of <a href="../gmock_for_dummies.md#matchers-what-arguments-do-we-expect">matchers</a> that correspond to each argument of the method *<code>method_name</code>*. The <code>ON_CALL</code> specification will apply only to calls of *<code>method_name</code>* whose arguments match all of the matchers. If <code>(</code>*<code>matchers...</code>*<code>)</code> is omitted, the behavior is as if each argument's matcher were a <a href="matchers.md#wildcard">wildcard matcher (<code>_</code>)</a>. See the /home/drakowkq/work/OOP_FIT/lab1(bitArr)/googletest/docs/reference/matchers.md "Matchers Reference" for a list of all built-in matchers.</p>
 <p>The following chainable clauses can be used to set the method's behavior, and they must be used in the following order:</p>
 <div class="fragment"><div class="line">ON_CALL(mock_object, method_name(matchers...))</div>
 <div class="line">    .With(multi_argument_matcher)  <span class="comment">// Can be used at most once</span></div>
@@ -276,7 +276,7 @@ With {#ON_CALL.With}</h3>
 WillByDefault {#ON_CALL.WillByDefault}</h3>
 <p><code>.WillByDefault(</code>*<code>action</code>*<code>)</code></p>
 <p>Specifies the default behavior of a matching mock function call.</p>
-<p>The parameter *<code>action</code>* represents the <a href="../gmock_for_dummies.md#actions-what-should-it-do">action</a> that the function call will perform. See the /home/drakowkq/work/labs/lab1(bitArr)/googletest/docs/reference/actions.md "Actions Reference" for a list of built-in actions.</p>
+<p>The parameter *<code>action</code>* represents the <a href="../gmock_for_dummies.md#actions-what-should-it-do">action</a> that the function call will perform. See the /home/drakowkq/work/OOP_FIT/lab1(bitArr)/googletest/docs/reference/actions.md "Actions Reference" for a list of built-in actions.</p>
 <p>For example, the following code specifies that by default, a call to <code>my_mock.Greet()</code> will return <code>"hello"</code>:</p>
 <div class="fragment"><div class="line">using ::testing::Return;</div>
 <div class="line">...</div>

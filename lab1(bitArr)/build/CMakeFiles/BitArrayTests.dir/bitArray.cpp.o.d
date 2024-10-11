@@ -1,7 +1,7 @@
 CMakeFiles/BitArrayTests.dir/bitArray.cpp.o: \
- /home/drakowkq/work/labs/lab1(bitArr)/bitArray.cpp \
+ /home/drakowkq/work/OOP_FIT/lab1(bitArr)/bitArray.cpp \
  /usr/include/stdc-predef.h \
- /home/drakowkq/work/labs/lab1(bitArr)/bitArray.h \
+ /home/drakowkq/work/OOP_FIT/lab1(bitArr)/bitArray.h \
  /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_algobase.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \

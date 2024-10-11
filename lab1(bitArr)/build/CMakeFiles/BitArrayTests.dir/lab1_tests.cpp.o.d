@@ -1,5 +1,5 @@
 CMakeFiles/BitArrayTests.dir/lab1_tests.cpp.o: \
- /home/drakowkq/work/labs/lab1(bitArr)/lab1_tests.cpp \
+ /home/drakowkq/work/OOP_FIT/lab1(bitArr)/lab1_tests.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/11/iostream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -265,4 +265,4 @@ CMakeFiles/BitArrayTests.dir/lab1_tests.cpp.o: \
  /usr/include/gtest/gtest-test-part.h /usr/include/gtest/gtest_prod.h \
  /usr/include/gtest/gtest-typed-test.h \
  /usr/include/gtest/gtest_pred_impl.h \
- /home/drakowkq/work/labs/lab1(bitArr)/bitArray.h
+ /home/drakowkq/work/OOP_FIT/lab1(bitArr)/bitArray.h

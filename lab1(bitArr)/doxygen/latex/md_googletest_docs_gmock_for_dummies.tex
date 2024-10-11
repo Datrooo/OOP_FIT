@@ -245,7 +245,7 @@ Oftentimes you do not want to be too specific. Remember that talk about tests be
 
 {\ttfamily \+\_\+} is an instance of what we call {\bfseries{matchers}}. A matcher is like a predicate and can test whether an argument is what we\textquotesingle{}d expect. You can use a matcher inside {\ttfamily EXPECT\+\_\+\+CALL()} wherever a function argument is expected. {\ttfamily \+\_\+} is a convenient way of saying \char`\"{}any value\char`\"{}.
 
-In the above examples, {\ttfamily 100} and {\ttfamily 50} are also matchers; implicitly, they are the same as {\ttfamily Eq(100)} and {\ttfamily Eq(50)}, which specify that the argument must be equal (using {\ttfamily operator==}) to the matcher argument. There are many /home/drakowkq/work/labs/lab1(bit\+Arr)/googletest/docs/reference/matchers.md \char`\"{}built-\/in matchers\char`\"{} for common types (as well as \href{gmock_cook_book.md\#NewMatchers}{\texttt{ custom matchers}}); for example\+:
+In the above examples, {\ttfamily 100} and {\ttfamily 50} are also matchers; implicitly, they are the same as {\ttfamily Eq(100)} and {\ttfamily Eq(50)}, which specify that the argument must be equal (using {\ttfamily operator==}) to the matcher argument. There are many /home/drakowkq/work/\+OOP\+\_\+\+FIT/lab1(bit\+Arr)/googletest/docs/reference/matchers.md \char`\"{}built-\/in matchers\char`\"{} for common types (as well as \href{gmock_cook_book.md\#NewMatchers}{\texttt{ custom matchers}}); for example\+:
 
 
 \begin{DoxyCode}{0}
@@ -338,7 +338,7 @@ What can we do inside {\ttfamily Will\+Once()} besides {\ttfamily Return()}? You
 \end{DoxyCode}
 
 
-Instead of returning 100, 101, 102, ..., consecutively, this mock function will always return 100 as {\ttfamily n++} is only evaluated once. Similarly, {\ttfamily Return(new Foo)} will create a new {\ttfamily Foo} object when the {\ttfamily EXPECT\+\_\+\+CALL()} is executed, and will return the same pointer every time. If you want the side effect to happen every time, you need to define a custom action, which we\textquotesingle{}ll teach in the /home/drakowkq/work/labs/lab1(bit\+Arr)/googletest/docs/gmock\+\_\+cook\+\_\+book.md \char`\"{}cook book\char`\"{}.
+Instead of returning 100, 101, 102, ..., consecutively, this mock function will always return 100 as {\ttfamily n++} is only evaluated once. Similarly, {\ttfamily Return(new Foo)} will create a new {\ttfamily Foo} object when the {\ttfamily EXPECT\+\_\+\+CALL()} is executed, and will return the same pointer every time. If you want the side effect to happen every time, you need to define a custom action, which we\textquotesingle{}ll teach in the /home/drakowkq/work/\+OOP\+\_\+\+FIT/lab1(bit\+Arr)/googletest/docs/gmock\+\_\+cook\+\_\+book.md \char`\"{}cook book\char`\"{}.
 
 Time for another quiz! What do you think the following means?
 

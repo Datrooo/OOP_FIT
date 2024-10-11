@@ -54,10 +54,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/drakowkq/work/labs/lab1(bitArr)"
+CMAKE_SOURCE_DIR = "/home/drakowkq/work/OOP_FIT/lab1(bitArr)"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/drakowkq/work/labs/lab1(bitArr)/build"
+CMAKE_BINARY_DIR = "/home/drakowkq/work/OOP_FIT/lab1(bitArr)/build"
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -83,14 +83,14 @@ clean: CMakeFiles/BitArrayTests.dir/clean
 CMakeFiles/BitArray.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BitArray.dir/build.make CMakeFiles/BitArray.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BitArray.dir/build.make CMakeFiles/BitArray.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/drakowkq/work/labs/lab1(bitArr)/build/CMakeFiles" --progress-num=1,2,3 "Built target BitArray"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/drakowkq/work/OOP_FIT/lab1(bitArr)/build/CMakeFiles" --progress-num=1,2,3 "Built target BitArray"
 .PHONY : CMakeFiles/BitArray.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/BitArray.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/drakowkq/work/labs/lab1(bitArr)/build/CMakeFiles" 3
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/drakowkq/work/OOP_FIT/lab1(bitArr)/build/CMakeFiles" 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/BitArray.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/drakowkq/work/labs/lab1(bitArr)/build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/drakowkq/work/OOP_FIT/lab1(bitArr)/build/CMakeFiles" 0
 .PHONY : CMakeFiles/BitArray.dir/rule
 
 # Convenience name for target.
@@ -109,14 +109,14 @@ CMakeFiles/BitArray.dir/clean:
 CMakeFiles/BitArrayTests.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BitArrayTests.dir/build.make CMakeFiles/BitArrayTests.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BitArrayTests.dir/build.make CMakeFiles/BitArrayTests.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/drakowkq/work/labs/lab1(bitArr)/build/CMakeFiles" --progress-num=4,5,6 "Built target BitArrayTests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/drakowkq/work/OOP_FIT/lab1(bitArr)/build/CMakeFiles" --progress-num=4,5,6 "Built target BitArrayTests"
 .PHONY : CMakeFiles/BitArrayTests.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/BitArrayTests.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/drakowkq/work/labs/lab1(bitArr)/build/CMakeFiles" 3
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/drakowkq/work/OOP_FIT/lab1(bitArr)/build/CMakeFiles" 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/BitArrayTests.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/drakowkq/work/labs/lab1(bitArr)/build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/drakowkq/work/OOP_FIT/lab1(bitArr)/build/CMakeFiles" 0
 .PHONY : CMakeFiles/BitArrayTests.dir/rule
 
 # Convenience name for target.

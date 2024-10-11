@@ -44,10 +44,10 @@ Generates a nonfatal failure, which allows the current function to continue runn
 {\ttfamily ADD\+\_\+\+FAILURE\+\_\+\+AT(}$\ast${\ttfamily file\+\_\+path}$\ast${\ttfamily ,}$\ast${\ttfamily line\+\_\+number}$\ast${\ttfamily )}
 
 Generates a nonfatal failure at the file and line number specified.\hypertarget{md_googletest_docs_reference_assertions_generalized}{}\doxysection{Generalized Assertion}\label{md_googletest_docs_reference_assertions_generalized}
-The following assertion allows /home/drakowkq/work/labs/lab1(bit\+Arr)/googletest/docs/reference/matchers.md \char`\"{}matchers\char`\"{} to be used to verify values.\hypertarget{md_googletest_docs_reference_assertions_EXPECT_THAT}{}\doxysubsection{EXPECT\+\_\+\+THAT}\label{md_googletest_docs_reference_assertions_EXPECT_THAT}
+The following assertion allows /home/drakowkq/work/\+OOP\+\_\+\+FIT/lab1(bit\+Arr)/googletest/docs/reference/matchers.md \char`\"{}matchers\char`\"{} to be used to verify values.\hypertarget{md_googletest_docs_reference_assertions_EXPECT_THAT}{}\doxysubsection{EXPECT\+\_\+\+THAT}\label{md_googletest_docs_reference_assertions_EXPECT_THAT}
 {\ttfamily EXPECT\+\_\+\+THAT(}$\ast${\ttfamily value}$\ast${\ttfamily ,}$\ast${\ttfamily matcher}$\ast${\ttfamily )} \textbackslash{} {\ttfamily ASSERT\+\_\+\+THAT(}$\ast${\ttfamily value}$\ast${\ttfamily ,}$\ast${\ttfamily matcher}$\ast${\ttfamily )}
 
-Verifies that $\ast${\ttfamily value}$\ast$ matches the /home/drakowkq/work/labs/lab1(bit\+Arr)/googletest/docs/reference/matchers.md \char`\"{}matcher\char`\"{} $\ast${\ttfamily matcher}$\ast$.
+Verifies that $\ast${\ttfamily value}$\ast$ matches the /home/drakowkq/work/\+OOP\+\_\+\+FIT/lab1(bit\+Arr)/googletest/docs/reference/matchers.md \char`\"{}matcher\char`\"{} $\ast${\ttfamily matcher}$\ast$.
 
 For example, the following code verifies that the string {\ttfamily value1} starts with {\ttfamily \char`\"{}\+Hello\char`\"{}}, {\ttfamily value2} matches a regular expression, and {\ttfamily value3} is between 5 and 10\+:
 
@@ -80,7 +80,7 @@ Matchers enable assertions of this form to read like English and generate inform
 \end{DoxyCode}
 
 
-Google\+Test provides a built-\/in library of matchers—see the /home/drakowkq/work/labs/lab1(bit\+Arr)/googletest/docs/reference/matchers.md \char`\"{}\+Matchers Reference\char`\"{}. It is also possible to write your own matchers—see \href{../gmock_cook_book.md\#NewMatchers}{\texttt{ Writing New Matchers Quickly}}. The use of matchers makes {\ttfamily EXPECT\+\_\+\+THAT} a powerful, extensible assertion.
+Google\+Test provides a built-\/in library of matchers—see the /home/drakowkq/work/\+OOP\+\_\+\+FIT/lab1(bit\+Arr)/googletest/docs/reference/matchers.md \char`\"{}\+Matchers Reference\char`\"{}. It is also possible to write your own matchers—see \href{../gmock_cook_book.md\#NewMatchers}{\texttt{ Writing New Matchers Quickly}}. The use of matchers makes {\ttfamily EXPECT\+\_\+\+THAT} a powerful, extensible assertion.
 
 {\itshape The idea for this assertion was borrowed from Joe Walnes\textquotesingle{} Hamcrest project, which adds {\ttfamily assert\+That()} to JUnit.}\hypertarget{md_googletest_docs_reference_assertions_boolean}{}\doxysection{Boolean Conditions}\label{md_googletest_docs_reference_assertions_boolean}
 The following assertions test Boolean conditions.\hypertarget{md_googletest_docs_reference_assertions_EXPECT_TRUE}{}\doxysubsection{EXPECT\+\_\+\+TRUE}\label{md_googletest_docs_reference_assertions_EXPECT_TRUE}
@@ -367,7 +367,7 @@ Note that the piece of code under test can be a compound statement, for example\
 
 Verifies that $\ast${\ttfamily statement}$\ast$ causes the process to terminate with a nonzero exit status and produces {\ttfamily stderr} output that matches $\ast${\ttfamily matcher}$\ast$.
 
-The parameter $\ast${\ttfamily matcher}$\ast$ is either a /home/drakowkq/work/labs/lab1(bit\+Arr)/googletest/docs/reference/matchers.md \char`\"{}matcher\char`\"{} for a {\ttfamily const std\+::string\&}, or a regular expression (see \href{../advanced.md\#regular-expression-syntax}{\texttt{ Regular Expression Syntax}})—a bare string $\ast${\ttfamily s}$\ast$ (with no matcher) is treated as \href{matchers.md\#string-matchers}{\texttt{ {\ttfamily Contains\+Regex(s)}}}, {\bfseries{not}} \href{matchers.md\#generic-comparison}{\texttt{ {\ttfamily Eq(s)}}}.
+The parameter $\ast${\ttfamily matcher}$\ast$ is either a /home/drakowkq/work/\+OOP\+\_\+\+FIT/lab1(bit\+Arr)/googletest/docs/reference/matchers.md \char`\"{}matcher\char`\"{} for a {\ttfamily const std\+::string\&}, or a regular expression (see \href{../advanced.md\#regular-expression-syntax}{\texttt{ Regular Expression Syntax}})—a bare string $\ast${\ttfamily s}$\ast$ (with no matcher) is treated as \href{matchers.md\#string-matchers}{\texttt{ {\ttfamily Contains\+Regex(s)}}}, {\bfseries{not}} \href{matchers.md\#generic-comparison}{\texttt{ {\ttfamily Eq(s)}}}.
 
 For example, the following code verifies that calling {\ttfamily Do\+Something(42)} causes the process to die with an error message that contains the text {\ttfamily My error}\+:
 
@@ -401,7 +401,7 @@ The parameter $\ast${\ttfamily predicate}$\ast$ is a function or functor that ac
 \end{DoxyCode}
 
 
-The parameter $\ast${\ttfamily matcher}$\ast$ is either a /home/drakowkq/work/labs/lab1(bit\+Arr)/googletest/docs/reference/matchers.md \char`\"{}matcher\char`\"{} for a {\ttfamily const std\+::string\&}, or a regular expression (see \href{../advanced.md\#regular-expression-syntax}{\texttt{ Regular Expression Syntax}})—a bare string $\ast${\ttfamily s}$\ast$ (with no matcher) is treated as \href{matchers.md\#string-matchers}{\texttt{ {\ttfamily Contains\+Regex(s)}}}, {\bfseries{not}} \href{matchers.md\#generic-comparison}{\texttt{ {\ttfamily Eq(s)}}}.
+The parameter $\ast${\ttfamily matcher}$\ast$ is either a /home/drakowkq/work/\+OOP\+\_\+\+FIT/lab1(bit\+Arr)/googletest/docs/reference/matchers.md \char`\"{}matcher\char`\"{} for a {\ttfamily const std\+::string\&}, or a regular expression (see \href{../advanced.md\#regular-expression-syntax}{\texttt{ Regular Expression Syntax}})—a bare string $\ast${\ttfamily s}$\ast$ (with no matcher) is treated as \href{matchers.md\#string-matchers}{\texttt{ {\ttfamily Contains\+Regex(s)}}}, {\bfseries{not}} \href{matchers.md\#generic-comparison}{\texttt{ {\ttfamily Eq(s)}}}.
 
 For example, the following code verifies that calling {\ttfamily Normal\+Exit()} causes the process to print a message containing the text {\ttfamily Success} to {\ttfamily stderr} and exit with exit status code 0\+:
 

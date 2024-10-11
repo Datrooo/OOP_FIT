@@ -72,7 +72,7 @@ To provide a custom failure message, simply stream it into the macro using the {
 
 Anything that can be streamed to an {\ttfamily ostream} can be streamed to an assertion macro--in particular, C strings and {\ttfamily string} objects. If a wide string ({\ttfamily wchar\+\_\+t$\ast$}, {\ttfamily TCHAR$\ast$} in {\ttfamily UNICODE} mode on Windows, or {\ttfamily std\+::wstring}) is streamed to an assertion, it will be translated to UTF-\/8 when printed.
 
-Google\+Test provides a collection of assertions for verifying the behavior of your code in various ways. You can check Boolean conditions, compare values based on relational operators, verify string values, floating-\/point values, and much more. There are even assertions that enable you to verify more complex states by providing custom predicates. For the complete list of assertions provided by Google\+Test, see the /home/drakowkq/work/labs/lab1(bit\+Arr)/googletest/docs/reference/assertions.md \char`\"{}\+Assertions Reference\char`\"{}.\hypertarget{md_googletest_docs_primer_autotoc_md229}{}\doxysection{Simple Tests}\label{md_googletest_docs_primer_autotoc_md229}
+Google\+Test provides a collection of assertions for verifying the behavior of your code in various ways. You can check Boolean conditions, compare values based on relational operators, verify string values, floating-\/point values, and much more. There are even assertions that enable you to verify more complex states by providing custom predicates. For the complete list of assertions provided by Google\+Test, see the /home/drakowkq/work/\+OOP\+\_\+\+FIT/lab1(bit\+Arr)/googletest/docs/reference/assertions.md \char`\"{}\+Assertions Reference\char`\"{}.\hypertarget{md_googletest_docs_primer_autotoc_md229}{}\doxysection{Simple Tests}\label{md_googletest_docs_primer_autotoc_md229}
 To create a test\+:
 
 
@@ -348,7 +348,7 @@ You can start from this boilerplate\+:
 \end{DoxyCode}
 
 
-The {\ttfamily \+::testing\+::\+Init\+Google\+Test()} function parses the command line for googletest flags, and removes all recognized flags. This allows the user to control a test program\textquotesingle{}s behavior via various flags, which we\textquotesingle{}ll cover in the /home/drakowkq/work/labs/lab1(bit\+Arr)/googletest/docs/advanced.md \char`\"{}\+Advanced\+Guide\char`\"{}. You {\bfseries{must}} call this function before calling {\ttfamily RUN\+\_\+\+ALL\+\_\+\+TESTS()}, or the flags won\textquotesingle{}t be properly initialized.
+The {\ttfamily \+::testing\+::\+Init\+Google\+Test()} function parses the command line for googletest flags, and removes all recognized flags. This allows the user to control a test program\textquotesingle{}s behavior via various flags, which we\textquotesingle{}ll cover in the /home/drakowkq/work/\+OOP\+\_\+\+FIT/lab1(bit\+Arr)/googletest/docs/advanced.md \char`\"{}\+Advanced\+Guide\char`\"{}. You {\bfseries{must}} call this function before calling {\ttfamily RUN\+\_\+\+ALL\+\_\+\+TESTS()}, or the flags won\textquotesingle{}t be properly initialized.
 
 On Windows, {\ttfamily Init\+Google\+Test()} also works with wide strings, so it can be used in programs compiled in {\ttfamily UNICODE} mode as well.
 

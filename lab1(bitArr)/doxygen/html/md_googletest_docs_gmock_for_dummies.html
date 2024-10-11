@@ -238,7 +238,7 @@ Matchers: What Arguments Do We Expect?</h2>
 <div class="line"><span class="comment">// Expects that the turtle jumps to somewhere on the x=50 line.</span></div>
 <div class="line">EXPECT_CALL(turtle, GoTo(50, _));</div>
 </div><!-- fragment --><p><code>_</code> is an instance of what we call <b>matchers</b>. A matcher is like a predicate and can test whether an argument is what we'd expect. You can use a matcher inside <code>EXPECT_CALL()</code> wherever a function argument is expected. <code>_</code> is a convenient way of saying "any value".</p>
-<p>In the above examples, <code>100</code> and <code>50</code> are also matchers; implicitly, they are the same as <code>Eq(100)</code> and <code>Eq(50)</code>, which specify that the argument must be equal (using <code>operator==</code>) to the matcher argument. There are many /home/drakowkq/work/labs/lab1(bitArr)/googletest/docs/reference/matchers.md "built-in matchers" for common types (as well as <a href="gmock_cook_book.md#NewMatchers">custom matchers</a>); for example:</p>
+<p>In the above examples, <code>100</code> and <code>50</code> are also matchers; implicitly, they are the same as <code>Eq(100)</code> and <code>Eq(50)</code>, which specify that the argument must be equal (using <code>operator==</code>) to the matcher argument. There are many /home/drakowkq/work/OOP_FIT/lab1(bitArr)/googletest/docs/reference/matchers.md "built-in matchers" for common types (as well as <a href="gmock_cook_book.md#NewMatchers">custom matchers</a>); for example:</p>
 <div class="fragment"><div class="line">using ::testing::Ge;</div>
 <div class="line">...</div>
 <div class="line"><span class="comment">// Expects the turtle moves forward by at least 100.</span></div>
@@ -289,7 +289,7 @@ Actions: What Should It Do?</h2>
 <div class="line">EXPECT_CALL(turtle, GetX())</div>
 <div class="line">    .Times(4)</div>
 <div class="line">    .WillRepeatedly(Return(n++));</div>
-</div><!-- fragment --><p>Instead of returning 100, 101, 102, ..., consecutively, this mock function will always return 100 as <code>n++</code> is only evaluated once. Similarly, <code>Return(new Foo)</code> will create a new <code>Foo</code> object when the <code>EXPECT_CALL()</code> is executed, and will return the same pointer every time. If you want the side effect to happen every time, you need to define a custom action, which we'll teach in the /home/drakowkq/work/labs/lab1(bitArr)/googletest/docs/gmock_cook_book.md "cook book".</p>
+</div><!-- fragment --><p>Instead of returning 100, 101, 102, ..., consecutively, this mock function will always return 100 as <code>n++</code> is only evaluated once. Similarly, <code>Return(new Foo)</code> will create a new <code>Foo</code> object when the <code>EXPECT_CALL()</code> is executed, and will return the same pointer every time. If you want the side effect to happen every time, you need to define a custom action, which we'll teach in the /home/drakowkq/work/OOP_FIT/lab1(bitArr)/googletest/docs/gmock_cook_book.md "cook book".</p>
 <p>Time for another quiz! What do you think the following means?</p>
 <div class="fragment"><div class="line">using ::testing::Return;</div>
 <div class="line">...</div>

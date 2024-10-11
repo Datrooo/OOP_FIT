@@ -67,7 +67,7 @@ $(function() {
 <div class="title">gMock Cookbook </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>You can find recipes for using gMock here. If you haven't yet, please read /home/drakowkq/work/labs/lab1(bitArr)/googletest/docs/gmock_for_dummies.md "the dummy guide" first to make sure you understand the basics.</p>
+<div class="textblock"><p>You can find recipes for using gMock here. If you haven't yet, please read /home/drakowkq/work/OOP_FIT/lab1(bitArr)/googletest/docs/gmock_for_dummies.md "the dummy guide" first to make sure you understand the basics.</p>
 <p>{: .callout .note} <b>Note:</b> gMock lives in the <code>testing</code> name space. For readability, it is recommended to write <code>using ::testing::Foo;</code> once in your file before using the name <code>Foo</code> defined by gMock. We omit such <code>using</code> statements in this section for brevity, but you should do it in your own code.</p>
 <h1><a class="anchor" id="autotoc_md119"></a>
 Creating Mock Classes</h1>
@@ -752,7 +752,7 @@ Using Matchers in googletest Assertions</h2>
 <p>See <a href="reference/assertions.md#EXPECT_THAT"><code>EXPECT_THAT</code></a> in the Assertions Reference.</p>
 <h2><a class="anchor" id="autotoc_md136"></a>
 Using Predicates as Matchers</h2>
-<p>gMock provides a set of built-in matchers for matching arguments with expected values—see the /home/drakowkq/work/labs/lab1(bitArr)/googletest/docs/reference/matchers.md "Matchers Reference" for more information. In case you find the built-in set lacking, you can use an arbitrary unary predicate function or functor as a matcher - as long as the predicate accepts a value of the type you want. You do this by wrapping the predicate inside the <code>Truly()</code> function, for example:</p>
+<p>gMock provides a set of built-in matchers for matching arguments with expected values—see the /home/drakowkq/work/OOP_FIT/lab1(bitArr)/googletest/docs/reference/matchers.md "Matchers Reference" for more information. In case you find the built-in set lacking, you can use an arbitrary unary predicate function or functor as a matcher - as long as the predicate accepts a value of the type you want. You do this by wrapping the predicate inside the <code>Truly()</code> function, for example:</p>
 <div class="fragment"><div class="line">using ::testing::Truly;</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> IsEven(<span class="keywordtype">int</span> n) { <span class="keywordflow">return</span> (n % 2) == 0 ? 1 : 0; }</div>
