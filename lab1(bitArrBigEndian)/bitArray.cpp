@@ -4,12 +4,16 @@
 
 const int BitArray::bitsPerBlock = sizeof(unsigned long) * BYTE;
 
+int BitArray::findBlock(int numBits){
+    return (numBits + bitsPerBlock - 1) / bitsPerBlock;
+}
+
 BitArray::BitArray() : sizeOfBuf(0) {}
 
 BitArray::~BitArray() {}    
 
 BitArray::BitArray(int numBits, unsigned long value)
-    : bits((numBits + bitsPerBlock - 1) / bitsPerBlock, 0), sizeOfBuf(numBits){
+    : bits(findBlock(numBits), 0), sizeOfBuf(numBits){
     if (numBits < 0) {
         throw std::invalid_argument("Number of bits cannot be negative.");
     }
@@ -48,22 +52,15 @@ void BitArray::resize(int numBits, bool value){
         throw std::invalid_argument("index of bits cannot be negative.");
     }
 
-    int diff = numBits - sizeOfBuf;
+    bits.resize(findBlock(numBits), value ? ~0UL : 0UL);
 
-    if (diff < 0){
-        (*this) <<= numBits;
-    }
-
-
-    bits.resize((numBits + bitsPerBlock - 1) / bitsPerBlock, value ? ~0UL : 0UL);
+    int i = std::min(sizeOfBuf, numBits);
     sizeOfBuf = numBits;
 
-    if (diff > 0){
-        (*this) >>= diff;
-        for(int i = numBits - diff; i < numBits; ++i){
-            set(i, value);
-        }
+    for (; i < numBits; i++){
+        set(i, value);
     }
+
 }
  
  
@@ -114,7 +111,7 @@ BitArray& BitArray::operator^=(const BitArray& b){
 }
 
 
-BitArray& BitArray::operator<<=(int n){
+BitArray& BitArray::operator>>=(int n){
     if (n < 0){
         throw std::invalid_argument("shift cannot be negative");
     }
@@ -127,16 +124,16 @@ BitArray& BitArray::operator<<=(int n){
     }
 
     for (int i = 0; i < sizeOfBuf - n; ++i){
-        set(sizeOfBuf - i - 1, (*this)[sizeOfBuf - 1 - n - i]);
+        set(i, (*this)[i + n]);
     }
 
-    for (int i = n - 1; i >= 0; --i){
+    for (int i = sizeOfBuf - n; i < sizeOfBuf; ++i){
         set(i, false);
     }
     return *this;
 }
 
-BitArray& BitArray::operator>>=(int n){
+BitArray& BitArray::operator<<=(int n){
     if (n < 0){
         throw std::invalid_argument("shift cannot be negative");
     }
@@ -148,11 +145,11 @@ BitArray& BitArray::operator>>=(int n){
         return *this;
     }
 
-    for (int i = 0; i < sizeOfBuf - n; ++i){
-        set(i, (*this)[i+n]);
+    for (int i = sizeOfBuf - 1; i > n - 1; --i){
+        set(i, (*this)[i - n]);
     }
 
-    for (int i = sizeOfBuf - 1; i > sizeOfBuf - n - 1 ; --i){
+    for (int i = 0; i < n; ++i){
         set(i, false);
     }
 
@@ -176,11 +173,12 @@ BitArray& BitArray::set(int n, bool val){
     if (n >= sizeOfBuf || n < 0){
         throw std::invalid_argument("index out of range" );
     }
+
     if (val){
-        bits[(sizeOfBuf - n) / bitsPerBlock] |= (1UL << ((sizeOfBuf - n -1) % bitsPerBlock));
+        bits[n / bitsPerBlock] |= (1UL << (n % bitsPerBlock));
     }
     else{
-        bits[(sizeOfBuf - n) / bitsPerBlock] &= ~(1UL << ((sizeOfBuf - n - 1) % bitsPerBlock));
+        bits[n / bitsPerBlock] &= ~(1UL << (n % bitsPerBlock));
     }
     return *this;
 }
@@ -234,7 +232,7 @@ bool BitArray::operator[](int i) const{
         throw std::invalid_argument("index out of range" );
     }
 
-    return (bits[(sizeOfBuf - i) / bitsPerBlock] >> ((sizeOfBuf - i - 1) % bitsPerBlock)) & 1;
+    return (bits[i / bitsPerBlock] >> (i % bitsPerBlock)) & 1;
 }
 
 int BitArray::size() const{
@@ -287,6 +285,5 @@ BitArray operator^(const BitArray& b1, const BitArray& b2){
     res ^= b2;
     return res;
 }
-
 
 
