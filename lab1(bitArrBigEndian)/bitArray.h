@@ -25,6 +25,11 @@ class BitArray{
          * @return num of block
          */
         int findBlock(int numBits);
+        /**
+         * @brief  Get mask to use in binary operations
+         * @return number, where the unit is in the right place
+         */
+        unsigned long getMask(int shift) const;
 
     public:
         /**

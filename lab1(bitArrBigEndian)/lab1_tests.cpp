@@ -28,12 +28,12 @@ TEST(BitArrayTest, ConstructorWithSizeAndValue){
 }
 
 TEST(BitArrayTest, ConstructorCopy){
-  BitArray a1(8, 3);
+  BitArray a1(8, 2);
   BitArray a2(a1);
   ASSERT_EQ(a2.size(), 8);
   ASSERT_FALSE(a2.empty());
-  ASSERT_EQ(a2.count(), 2);
-  ASSERT_EQ(a2.toString(), "00000011");
+  ASSERT_EQ(a2.count(), 1);
+  ASSERT_EQ(a2.toString(), "00000010");
 }
 
 TEST(BitArrayTest, Swap){

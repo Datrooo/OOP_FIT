@@ -8,6 +8,10 @@ int BitArray::findBlock(int numBits){
     return (numBits + bitsPerBlock - 1) / bitsPerBlock;
 }
 
+unsigned long BitArray::getMask(int shift) const{
+    return (1UL << (shift % bitsPerBlock));
+}
+
 BitArray::BitArray() : sizeOfBuf(0) {}
 
 BitArray::~BitArray() {}    
@@ -20,7 +24,7 @@ BitArray::BitArray(int numBits, unsigned long value)
 
     int minSize = std::min(numBits, bitsPerBlock);
     for (int i = 0; i < minSize; ++i){
-        if (value & (1UL <<  i)){
+        if (value & getMask(i)){
             set(i, true);
         }
     }
@@ -175,10 +179,10 @@ BitArray& BitArray::set(int n, bool val){
     }
 
     if (val){
-        bits[n / bitsPerBlock] |= (1UL << (n % bitsPerBlock));
+        bits[n / bitsPerBlock] |= getMask(n);
     }
     else{
-        bits[n / bitsPerBlock] &= ~(1UL << (n % bitsPerBlock));
+        bits[n / bitsPerBlock] &= ~getMask(n);
     }
     return *this;
 }
@@ -229,10 +233,10 @@ int BitArray::count() const{
 
 bool BitArray::operator[](int i) const{
     if (i >= sizeOfBuf || i < 0){
-        throw std::invalid_argument("index out of range" );
+        throw std::invalid_argument("index out of range");
     }
 
-    return (bits[i / bitsPerBlock] >> (i % bitsPerBlock)) & 1;
+    return (bits[i / bitsPerBlock] & getMask(i));
 }
 
 int BitArray::size() const{
