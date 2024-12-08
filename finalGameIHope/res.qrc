@@ -1,0 +1,43 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/bullet/fire(1).png</file>
+        <file>images/bullet/fire.png</file>
+        <file>images/bullet/redFireRight.png</file>
+        <file>images/bullet/skullL.png</file>
+        <file>images/bullet/skullR.png</file>
+        <file>images/ghost/1691417698_grizly-club-p-kartinki-2d-personazh-bez-fona-8.png</file>
+        <file>images/ghost/fGhostL.png</file>
+        <file>images/ghost/fGhostR.png</file>
+        <file>images/ghost/sGhostL.png</file>
+        <file>images/ghost/sGhostR.png</file>
+        <file>images/interface/background/castle.png</file>
+        <file>images/interface/background/charger.png</file>
+        <file>images/interface/background/lose.jpg</file>
+        <file>images/interface/background/mainWindow.png</file>
+        <file>images/interface/background/mainwindow.png</file>
+        <file>images/interface/background/set.png</file>
+        <file>images/interface/background/spam.png</file>
+        <file>images/interface/background/win.png</file>
+        <file>images/interface/platform.png</file>
+        <file>images/mouse/bomb.png</file>
+        <file>images/mouse/firstframe.png</file>
+        <file>images/mouse/fourthframe.png</file>
+        <file>images/mouse/secondframe.png</file>
+        <file>images/mouse/thirdframe.png</file>
+        <file>images/player/assasin/assasin.jpg</file>
+        <file>images/player/assasin/idleAs.png</file>
+        <file>images/player/assasin/idleAsL.png</file>
+        <file>images/player/assasin/jump.png</file>
+        <file>images/player/assasin/jumpL.png</file>
+        <file>images/player/assasin/move.png</file>
+        <file>images/player/assasin/moveL.png</file>
+        <file>images/player/grayhero/grayhero.jpg</file>
+        <file>images/player/redhero/redhero.jpg</file>
+        <file>music/Weary-Pines-Birth.mpga.wav</file>
+        <file>music/victory.mp3</file>
+        <file>music/main.mp3</file>
+        <file>music/lose.mp3</file>
+        <file>music/Kevin-MacLeod-Unholy-Knight.mpga.wav</file>
+        <file>music/game.mp3</file>
+    </qresource>
+</RCC>
