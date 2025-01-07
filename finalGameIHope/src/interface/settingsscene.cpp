@@ -1,7 +1,10 @@
 #include "include/interface/settingsscene.h"
 
 
-SettingsScene::SettingsScene() {    setSceneRect(0, 0, 1072, 603);
+SettingsScene::SettingsScene() {
+
+    //qDebug() << "start inicialisation settings";
+    setSceneRect(0, 0, 1072, 603);
 
     QImage backgroundImage(":/images/interface/background/set.png");
     QPixmap backgroundPixmap = QPixmap::fromImage(backgroundImage);
@@ -10,6 +13,7 @@ SettingsScene::SettingsScene() {    setSceneRect(0, 0, 1072, 603);
 
     QBrush brush(scaledPixmap);
     setBackgroundBrush(brush);
+    //qDebug() << "back setted";
 
 
     qreal buttonWidth = 200;
@@ -19,6 +23,7 @@ SettingsScene::SettingsScene() {    setSceneRect(0, 0, 1072, 603);
     qreal centerY = height() / 2;
 
     addButtonToScene("Выход", centerX, centerY + 210, buttonWidth, buttonHeight, this, &buttons);
+    //qDebug() << "button added";
 
     QGraphicsTextItem* title = addText("Настройки");
     title->setFont(QFont("Arial", 24, QFont::Bold));
@@ -29,16 +34,35 @@ SettingsScene::SettingsScene() {    setSceneRect(0, 0, 1072, 603);
     volumeText->setFont(QFont("Arial", 20));
     volumeText->setDefaultTextColor(Qt::white);
     volumeText->setPos(width() / 2 - volumeText->boundingRect().width() / 2, 80);
+    //qDebug() << "text added";
 
     slider = new VolumeSlider(width()/ 2 - 150, 150, 300, 10);
     addItem(slider);
     slider->setVolumeLevel(50);
+    //qDebug() << "slider added";
 
 }
 
 SettingsScene::~SettingsScene() {
+    //qDebug() << "settings scene delete started";
     delete slider;
-    removeAllButtons(this, &buttons);
+    //qDebug() << "slider deleted";
+    //removeAllButtons(this, &buttons);
+    for (Button* button : buttons) {
+        //qDebug() << "?";
+        if (button) {
+            //qDebug() << "button detected";
+            removeItem(button);
+            //qDebug() << "removed";
+            delete button;
+            //qDebug() << "deleted";
+        }
+    }
+    buttons.clear();
+    //qDebug() << "buttons cleared";
+    clear();
+    //qDebug() << "scene cleared";
+
 }
 
 QVector<Button *> SettingsScene::getButtons() {

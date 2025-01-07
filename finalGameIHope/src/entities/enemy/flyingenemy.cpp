@@ -6,7 +6,7 @@
 #include "include/entities/player/player.h"
 
 FlyingEnemy::FlyingEnemy() {
-    healthPoint = 10;
+    healthPoint = 100;
     xSpeed = 3.0;
     amplitude = 50.0;
     frequency = 0.05;

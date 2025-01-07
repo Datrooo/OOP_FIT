@@ -13,4 +13,8 @@ public:
     virtual void takeDamage(int damage) = 0;
 };
 
+struct EnemyData{
+    int xPos;
+};
+
 #endif // BASEENEMY_H

@@ -8,7 +8,6 @@ WinScene::WinScene() {
     QPixmap backgroundPixmap = QPixmap::fromImage(backgroundImage);
     QPixmap scaledPixmap = backgroundPixmap.scaled(sceneRect().size().toSize(), Qt::KeepAspectRatioByExpanding);
     QBrush brush(scaledPixmap);
-    //QBrush brush(backgroundPixmap);
     setBackgroundBrush(brush);
 
     qreal buttonWidth = 200;
@@ -23,7 +22,12 @@ WinScene::WinScene() {
 
 
 WinScene::~WinScene() {
-    removeAllButtons(this, &buttons);
+    for (Button* button : buttons) {
+        removeItem(button);
+        delete button;
+    }
+    buttons.clear();
+    clear();
 }
 
 QVector<Button *> WinScene::getButtons() {

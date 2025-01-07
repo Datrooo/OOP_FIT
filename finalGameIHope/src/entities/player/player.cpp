@@ -9,6 +9,7 @@
 #include "include/entities/player/jumpingstate.h"
 
 
+
 Player::Player() : jumpSpeed(-15), gravity(0.4) {
 
     setPos(100, 300);
@@ -39,7 +40,16 @@ Player::Player() : jumpSpeed(-15), gravity(0.4) {
         QPixmap(":/images/player/assasin/jumpL.png")
     };
     state = new IdleState(this);
+
+    frameChangers[idleFrame] = [this]() { setPixmap(animationFrames[idleFrame]); };
+    frameChangers[idleLFrame] = [this]() { setPixmap(animationFrames[idleLFrame]); };
+    frameChangers[movingFrame] = [this]() { setPixmap(animationFrames[movingFrame]); };
+    frameChangers[movingLFrame] = [this]() { setPixmap(animationFrames[movingLFrame]); };
+    frameChangers[jumpingFrame] = [this]() { setPixmap(animationFrames[jumpingFrame]); };
+    frameChangers[jumpingLFrame] = [this]() { setPixmap(animationFrames[jumpingLFrame]); };
+
 }
+
 
 Player::~Player() {
     chargeTimer->stop();
@@ -80,15 +90,30 @@ QList<QGraphicsItem *> Player::collidingItemsWithToleance(QGraphicsItem *parent,
     return collidingList;
 }
 
-
+void Player::onCollisionWithPlatform(){
+    onPlat = false;
+    QList<QGraphicsItem*> collidingItems = collidingItemsWithToleance(this, 15);
+    for (QGraphicsItem* item : collidingItems) {
+        Platform* platform = dynamic_cast<Platform*>(item);
+        if (platform) {
+            if (y() + boundingRect().height() >= platform->sceneBoundingRect().y() - 1 &&
+                y() <= platform->sceneBoundingRect().y() && jumpSpeed >= 0) {
+                setPos(x(), platform->sceneBoundingRect().y() - boundingRect().height());
+                jumpSpeed = 0;
+                onPlat = true;
+                break;
+            }
+        }
+    }
+}
 
 void Player::advance(int phase) {
-    //qDebug() << pixmap().height() << pixmap().width() << boundingRect().height() << boundingRect().width();
+
     if (!phase) {
         return;
     }
 
-    if (this->jumpSpeed <= 10) {
+    if (jumpSpeed <= 10) {
         jumpSpeed += gravity;
     }
 
@@ -102,26 +127,9 @@ void Player::advance(int phase) {
 
 
     emit posChanged(x(), y());
-    //qDebug() << "where i am" << x() << y();
-    onPlat = false;
 
-    QList<QGraphicsItem*> collidingItems = this->collidingItemsWithToleance(this, 15);
-    for (QGraphicsItem* item : collidingItems) {
-        Platform* platform = dynamic_cast<Platform*>(item);
-        if (platform) {
-            //qDebug() << "Player Y:" << y() << ", Platform Y:" << platform->getY();
-            //qDebug() << y() << boundingRect().height() << platform->getY() <<jumpSpeed;
-            if (y() + boundingRect().height() >= platform->sceneBoundingRect().y() - 1 &&
-                y() <= platform->sceneBoundingRect().y() && jumpSpeed >= 0) {
-                setPos(x(), platform->sceneBoundingRect().y() - boundingRect().height());
-                jumpSpeed = 0;
-                onPlat = true;
-                break;
-            }
-        }
-    }
+    onCollisionWithPlatform();
 
-    //qDebug() << "update ended state will change to" << onPlat;
     state->update(this);
 }
 
@@ -143,7 +151,7 @@ void Player::takeDamage(int damage){
 
 void Player::shoot() {
     if (canShoot) {
-        Bullet* bullet = new Bullet(this->x(), this->y(), 30, 15, 5, 0, 10, direction, this, QPixmap(":/images/bullet/redFireRight.png"), this);
+        Bullet* bullet = new Bullet(x(), y(), 30, 15, 5, 0, 10, direction, this, QPixmap(":/images/bullet/redFireRight.png"), this);
 
         if (currentFireMode == ChargingMode) {
             bullet->setPower(currentPower);
@@ -258,18 +266,9 @@ QTimer *Player::getSpammingTimer() {
 }
 
 void Player::changeFrame(PixtureState state) {
-    if (state == PixtureState::idleFrame) {
-        setPixmap(animationFrames[idleFrame]);
-    } else if (state == PixtureState::idleLFrame) {
-        setPixmap(animationFrames[idleLFrame]);
-    } else if (state == PixtureState::movingFrame) {
-        setPixmap(animationFrames[movingFrame]);
-    } else if (state == PixtureState::movingLFrame) {
-        setPixmap(animationFrames[movingLFrame]);
-    } else if (state == PixtureState::jumpingFrame) {
-        setPixmap(animationFrames[jumpingFrame]);
-    } else if (state == PixtureState::jumpingLFrame) {
-        setPixmap(animationFrames[jumpingLFrame]);
+    auto it = frameChangers.find(state);
+    if (it != frameChangers.end()) {
+        it->second();
     }
 }
 

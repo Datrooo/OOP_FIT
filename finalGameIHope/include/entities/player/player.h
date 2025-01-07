@@ -9,7 +9,7 @@
 #include <QList>
 
 #define MAX_POWER 200
-#define MAX_HEALTH 10
+#define MAX_HEALTH 100
 
 class PlayerState;
 class Platform;
@@ -86,6 +86,7 @@ private:
     void advance(int phase) override;
 
     QList<QGraphicsItem *> collidingItemsWithToleance(QGraphicsItem * parent, qreal tolerance);
+    void onCollisionWithPlatform();
 
     FireMode currentFireMode;
     int currentPower = 0;
@@ -94,6 +95,8 @@ private:
     QTimer * chargeTimer;
     QTimer* spammingTimer;
 
+    typedef std::function<void()> frimeChanger;
+    std::unordered_map<int, frimeChanger> frameChangers;
     std::vector<QPixmap> animationFrames;
 
 };

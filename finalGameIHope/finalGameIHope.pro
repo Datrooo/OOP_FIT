@@ -2,7 +2,7 @@ QT       += core gui multimedia
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 
-CONFIG += c++17
+CONFIG += c++17 sanitize_address
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -28,7 +28,8 @@ SOURCES += \
     src/interface/volumeslider.cpp \
     src/interface/winscene.cpp \
     src/soundcontroller.cpp \
-    main.cpp
+    main.cpp \
+    src/universalfabric.cpp
 
 
 HEADERS += \
@@ -55,7 +56,8 @@ HEADERS += \
     include/interface/settingsscene.h \
     include/interface/volumeslider.h \
     include/interface/winscene.h \
-    include/soundcontroller.h
+    include/soundcontroller.h \
+    include/universalfabric.h
 
 
 FORMS +=

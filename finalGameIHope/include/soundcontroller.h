@@ -8,6 +8,7 @@ class SoundController : public QObject {
     Q_OBJECT
 public:
     SoundController(QObject *parent = nullptr);
+    ~SoundController();
     void playSound(const QString &filePath);
     void setVolume(int volume);
     QMediaPlayer * getMediaPlayer();

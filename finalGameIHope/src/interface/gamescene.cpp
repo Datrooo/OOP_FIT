@@ -5,7 +5,8 @@
 #include <QRandomGenerator>
 
 
-GameScene::GameScene() : player(new Player()), factory(EnemyFactory::instance()) {
+
+GameScene::GameScene() : player(new Player())/*, factory(EnemyFactory::instance())*/ {
 
     setSceneRect(0, 0, 1072, 603);
 
@@ -26,32 +27,25 @@ GameScene::GameScene() : player(new Player()), factory(EnemyFactory::instance())
     connect(player, &Player::fireModeChanged, this, &GameScene::updateFireModeIcon);
 
 
+    QList<QRectF> platformSettings = {
+        QRectF(0, 570, 1072, 45),
+        QRectF(100, 450, 200, 20),
+        QRectF(300, 350, 300, 20),
+        QRectF(200, 250, 200, 20),
+        QRectF(700, 450, 200, 20),
+        QRectF(700, 250, 100, 20)
+    };
 
-    Platform* ground = new Platform(0, 570, 1072, 45, ":/images/interface/platform.png");
-    addItem(ground);
-    platforms.append(ground);
+    for (const QRectF& rect : platformSettings) {
+        Platform* platform = new Platform(rect.x(), rect.y(), rect.width(), rect.height(), ":/images/interface/platform.png");
+        addItem(platform);
+        platforms.append(platform);
+    }
 
-    Platform* platform1 = new Platform(100, 450, 200, 20, ":/images/interface/platform.png");
-    Platform* platform2 = new Platform(300, 350, 300, 20, ":/images/interface/platform.png");
-    Platform* platform3 = new Platform(200, 250, 200, 20, ":/images/interface/platform.png");
-    Platform* platform4 = new Platform(700, 450, 200, 20, ":/images/interface/platform.png");
-    Platform* platform5 = new Platform(700, 250, 100, 20, ":/images/interface/platform.png");
+    fabric = new UniversalFabric<BaseEnemy, EnemyData>();
+    registerEnemies(fabric);
 
-    addItem(platform1);
-    platforms.append(platform1);
-    addItem(platform2);
-    platforms.append(platform2);
-    addItem(platform3);
-    platforms.append(platform3);
-    addItem(platform4);
-    platforms.append(platform4);
-    addItem(platform5);
-    platforms.append(platform5);
-
-
-    registerEnemies(factory);
-
-    enemy =dynamic_cast<Enemy*>(factory.createEnemy("BOSSEnemy"));
+    enemy = dynamic_cast<Enemy*>(fabric->createObject("Ghost"));
     addItem(dynamic_cast<QGraphicsItem*>(enemy));
     enemy->setPos(900, 600);
     enemy->startAttacking();
@@ -85,63 +79,83 @@ GameScene::GameScene() : player(new Player()), factory(EnemyFactory::instance())
     chargeBar->setPos(10, 10);
     addItem(chargeBar);
 
-    connect(this->player->getChargeTimer(), &QTimer::timeout, this->player, &Player::updateCharge);
-    connect(this->player, &Player::callToUpdateCharge, this, &GameScene::updateChargeBar);
-    connect(this->player, &Player::callUpdateHealthBar, this, &GameScene::updateHealthBar);
-    connect(this->player->getSpammingTimer(), &QTimer::timeout, this->player, &Player::startSpamming);
-    connect(this->enemy, &Enemy::enemyDead, this, &GameScene::levelCompleted);
-    connect(this->player, &Player::playerDead, this, &GameScene::gameOver);
+    connect(player->getChargeTimer(), &QTimer::timeout, player, &Player::updateCharge);
+    connect(player, &Player::callToUpdateCharge, this, &GameScene::updateChargeBar);
+    connect(player, &Player::callUpdateHealthBar, this, &GameScene::updateHealthBar);
+    connect(player->getSpammingTimer(), &QTimer::timeout, player, &Player::startSpamming);
+    connect(enemy, &Enemy::enemyDead, this, &GameScene::levelCompleted);
+    connect(player, &Player::playerDead, this, &GameScene::gameOver);
 
 }
 
 GameScene::~GameScene() {
-    qDebug() << "nachalo";
+    //qDebug() << "nachalo";
     disconnect(player, &Player::fireModeChanged, this, &GameScene::updateFireModeIcon);
-    qDebug() << "1111";
+    //qDebug() << "1111";
     disconnect(gameTimer, &QTimer::timeout, this, &QGraphicsScene::advance);
-    qDebug() << "1221";
-    disconnect(this->player->getChargeTimer(), &QTimer::timeout, this->player, &Player::updateCharge);
-    qDebug() << "1333";
-    disconnect(this->player, &Player::callToUpdateCharge, this, &GameScene::updateChargeBar);
-    qDebug() << "1111";
-    disconnect(this->player, &Player::callUpdateHealthBar, this, &GameScene::updateHealthBar);
-    qDebug() << "1222";
-    disconnect(this->player->getSpammingTimer(), &QTimer::timeout, this->player, &Player::startSpamming);
-    qDebug() << "1333";
-    disconnect(this->enemy, &Enemy::enemyDead, this, &GameScene::levelCompleted);
-    qDebug() << "1111";
-    disconnect(this->player, &Player::playerDead, this, &GameScene::gameOver);
-    qDebug() << "1222";
+    //qDebug() << "1221";
+    disconnect(player->getChargeTimer(), &QTimer::timeout, player, &Player::updateCharge);
+    //qDebug() << "1333";
+    disconnect(player, &Player::callToUpdateCharge, this, &GameScene::updateChargeBar);
+    //qDebug() << "1111";
+    disconnect(player, &Player::callUpdateHealthBar, this, &GameScene::updateHealthBar);
+    //qDebug() << "1222";
+    disconnect(player->getSpammingTimer(), &QTimer::timeout, player, &Player::startSpamming);
+    //qDebug() << "1333";
+    disconnect(enemy, &Enemy::enemyDead, this, &GameScene::levelCompleted);
+    //qDebug() << "1111";
+    disconnect(player, &Player::playerDead, this, &GameScene::gameOver);
+    //qDebug() << "1222";
     disconnect(enemy, &Enemy::secondStage, this, &GameScene::spawnMouse);
-    qDebug() << "nachalo 1";
-    gameTimer->stop();
-    delete gameTimer;
-    qDebug() << "really";
+    //qDebug() << "nachalo 1";
+    if (gameTimer){
+        gameTimer->stop();
+        delete gameTimer;
+    }
+
+    //qDebug() << "really";
     if (mouse) {
         qDebug() << "really";
         removeItem(mouse);
         mouse->deleteLater();
-        disconnect(this->mouse, &FlyingEnemy::enemyDead, this, &GameScene::mouseDead);
+        disconnect(mouse, &FlyingEnemy::enemyDead, this, &GameScene::mouseDead);
     }
-    qDebug() << "nachalo 2";
-    delete fireModeIcon;
-    delete healthBar;
-    delete healthBarBackground;
-    delete chargeBar;
-    delete chargeBarBackground;
-    delete player;
-    delete enemy;
-    qDebug() << "1111";
+
+    if (fireModeIcon){
+        delete fireModeIcon;
+    }
+    if (healthBar) {
+        delete healthBar;
+    }
+    if (healthBarBackground) {
+        delete healthBarBackground;
+    }
+    if (chargeBar) {
+        delete chargeBar;
+    }
+    if (chargeBarBackground) {
+        delete chargeBarBackground;
+    }
+    if (player) {
+        delete player;
+    }
+    if (enemy) {
+        delete enemy;
+    }
+
+    //qDebug() << "1111";
     for (Platform* platform : platforms) {
-        qDebug() << "1";
+        //qDebug() << "1";
         removeItem(platform);
         delete platform;
     }
-    qDebug() << "12222";
+    //qDebug() << "12222";
     platforms.clear();
-    qDebug() << "1333";
-    //clear();
+    delete fabric;
+    //qDebug() << "1333";
+    clear();
 }
+
 
 void GameScene::updateHealthBar(qreal healthPoints) {
     healthBar->setRect(healthBarBackground->boundingRect().x(), healthBarBackground->boundingRect().y(), healthPoints * 110/ MAX_HEALTH, 20);
@@ -172,20 +186,20 @@ QTimer * GameScene::getTimer() {
 }
 
 void GameScene::spawnMouse() {
-    mouse = dynamic_cast<FlyingEnemy*>(factory.createEnemy("FlyingEnemy"));
+    mouse = dynamic_cast<FlyingEnemy*>(fabric->createObject("Mouse"));
     addItem(dynamic_cast<QGraphicsItem*>(mouse));
 
     mouse->setPos(900, QRandomGenerator::global()->bounded(100, 400));
     mouse->startAttacking();
-    connect(this->mouse, &FlyingEnemy::enemyDead, this, &GameScene::mouseDead);
-    connect(this->mouse, &FlyingEnemy::takeDamagePlayer, this->player, &Player::takeDamage);
+    connect(mouse, &FlyingEnemy::enemyDead, this, &GameScene::mouseDead);
+    connect(mouse, &FlyingEnemy::takeDamagePlayer, player, &Player::takeDamage);
 
     qDebug() << "spawn Mouse";
 }
 
 void GameScene::mouseDead() {
-    disconnect(this->mouse, &FlyingEnemy::enemyDead, this, &GameScene::mouseDead);
-    disconnect(this->mouse, &FlyingEnemy::takeDamagePlayer, this->player, &Player::takeDamage);
+    disconnect(mouse, &FlyingEnemy::enemyDead, this, &GameScene::mouseDead);
+    disconnect(mouse, &FlyingEnemy::takeDamagePlayer, player, &Player::takeDamage);
     removeItem(mouse);
     mouse->deleteLater();
     mouse = nullptr;

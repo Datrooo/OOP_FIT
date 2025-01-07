@@ -9,6 +9,8 @@
 #include "include/interface/winscene.h"
 #include "include/interface/losescene.h"
 #include "soundcontroller.h"
+#include <unordered_map>
+#include <functional>
 
 // переместить удаление сразу
 
@@ -17,6 +19,10 @@ class GameController : public QObject {
 public:
     GameController(GameView * view, QWidget* parent = nullptr);
     ~GameController();
+    typedef std::function<void()> signalEmitter;
+
+
+
 
 
 private:
@@ -32,9 +38,13 @@ private:
     void connectGameMenu();
     void connectSettingsScene();
 
+
+    void setupGameKeyHandlers();
+    void clearHandlers();
+
 private slots:
-    void analiseKeyPressed(QKeyEvent* event);
-    void analiseKeyReleased(QKeyEvent* event);
+    void onKeyPressed(QKeyEvent* event);
+    void onKeyReleased(QKeyEvent* event);
     void changeSceneToGame();
     void changeSceneToMenu();
     void changeSceneToWin();
@@ -61,6 +71,8 @@ private:
     WinScene * winscene = nullptr;
     LoseScene * losescene = nullptr;
     SoundController * soundController;
+
+    std::unordered_map<int, signalEmitter> keyHandlers;
 };
 
 #endif // GAMECONTROLLER_H

@@ -13,6 +13,7 @@ class Button : public QObject, public QGraphicsPathItem {
     Q_OBJECT
 public:
     Button(const QString& text, qreal x, qreal y, qreal width, qreal height);
+    ~Button();
 
 signals:
     void clicked();
@@ -30,7 +31,7 @@ private:
 
 
 void addButtonToScene(const QString& text, qreal x, qreal y, qreal width, qreal height, QGraphicsScene * scene, QVector<Button *> *buttons);
-void removeAllButtons(QGraphicsScene * scene, QVector<Button *> *buttons);
+//void removeAllButtons(QGraphicsScene * scene, QVector<Button *> *buttons);
 
 
 #endif // BUTTON_H

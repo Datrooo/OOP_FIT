@@ -7,6 +7,7 @@
 #include <QObject>
 #include "include/entities/enemy/enemyfactory.h"
 #include "include/entities/enemy/flyingenemy.h"
+#include "include/universalfabric.h"
 
 class GameScene : public QGraphicsScene {
     Q_OBJECT
@@ -31,11 +32,11 @@ private slots:
 
 
 private:
-    Player* player/* = nullptr*/;
+    Player* player = nullptr;
     Enemy * enemy = nullptr;
     FlyingEnemy * mouse = nullptr;
     QVector<Platform *> platforms;
-    EnemyFactory & factory;
+    UniversalFabric<BaseEnemy, EnemyData> *fabric;
 
     QTimer * gameTimer;
     QGraphicsRectItem* healthBar;

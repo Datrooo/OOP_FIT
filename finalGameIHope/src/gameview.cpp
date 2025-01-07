@@ -31,6 +31,8 @@ void GameView::keyReleaseEvent(QKeyEvent* event) {
 }
 
 void GameView::resizeEvent(QResizeEvent* event) {
+    qDebug() << "resized";
+    qDebug() << scene->sceneRect();
     QGraphicsView::resizeEvent(event);
     fitInView(scene->sceneRect(), Qt::KeepAspectRatio);
 }

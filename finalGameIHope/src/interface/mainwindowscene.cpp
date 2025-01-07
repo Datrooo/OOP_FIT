@@ -2,7 +2,7 @@
 #include "include/interface/button.h"
 
 MainWindowScene::MainWindowScene() {
-    // qDebug() << "new scene";
+    //qDebug() << "new main window scene";
     setSceneRect(0, 0, 1072, 603);
     QImage backgroundImage(":/images/interface/background/mainwindow.png");
     QPixmap backgroundPixmap = QPixmap::fromImage(backgroundImage);
@@ -11,6 +11,7 @@ MainWindowScene::MainWindowScene() {
 
     QBrush brush(scaledPixmap);
     setBackgroundBrush(brush);
+    //qDebug() << "back setted";
 
 
     qreal buttonWidth = 200;
@@ -22,10 +23,23 @@ MainWindowScene::MainWindowScene() {
     addButtonToScene("Играть", centerX, centerY - 70, buttonWidth, buttonHeight, this, &buttons);
     addButtonToScene("Настройки", centerX, centerY, buttonWidth, buttonHeight, this, &buttons);
     addButtonToScene("Выход", centerX, centerY + 70, buttonWidth, buttonHeight, this, &buttons);
+    //qDebug() << "buttons added";
 }
 
 MainWindowScene::~MainWindowScene() {
-    removeAllButtons(this, &buttons);
+    //qDebug() << "start delere main window";
+    for (Button* button : buttons) {
+        if (button) {
+            removeItem(button);
+            //qDebug() << "removed";
+            delete button;
+            //qDebug() << "deleted";
+        }
+    }
+    buttons.clear();
+    //qDebug() << "buttons cleared";
+    clear();
+    //qDebug() << "scene cleared";
 }
 
 QVector<Button *> MainWindowScene::getButtons() {

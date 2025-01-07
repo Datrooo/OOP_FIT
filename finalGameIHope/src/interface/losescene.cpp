@@ -1,14 +1,14 @@
 #include "include/interface/losescene.h"
 
 LoseScene::LoseScene() {
-    qDebug() << "NEW LOSE SCENE";
+    //qDebug() << "NEW LOSE SCENE";
     setSceneRect(0, 0, 1072, 603);
 
     QImage backgroundImage(":/images/interface/background/lose.jpg");
     QPixmap backgroundPixmap = QPixmap::fromImage(backgroundImage);
     QPixmap scaledPixmap = backgroundPixmap.scaled(sceneRect().size().toSize(), Qt::KeepAspectRatioByExpanding);
     QBrush brush(scaledPixmap);
-    //QBrush brush(backgroundPixmap);
+
     setBackgroundBrush(brush);
 
     qreal buttonWidth = 200;
@@ -21,8 +21,13 @@ LoseScene::LoseScene() {
 }
 
 LoseScene::~LoseScene() {
-    removeAllButtons(this, &buttons);
-    qDebug() << "lose scene deleted";
+    for (Button* button : buttons) {
+        removeItem(button);
+        delete button;
+    }
+    buttons.clear();
+    clear();
+    //qDebug() << "lose scene deleted";
 }
 
 

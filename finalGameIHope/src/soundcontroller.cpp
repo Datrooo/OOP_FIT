@@ -8,9 +8,14 @@
 
 SoundController::SoundController(QObject *parent) {
     player = new QMediaPlayer();
-    //audioOutput = new QAudioOutput(this);
     audioOutput = new QAudioOutput(parent);
     player->setAudioOutput(audioOutput);
+}
+
+SoundController::~SoundController(){
+    player->stop();
+    delete audioOutput;
+    delete player;
 }
 
 void SoundController::playSound(const QString &filePath) {

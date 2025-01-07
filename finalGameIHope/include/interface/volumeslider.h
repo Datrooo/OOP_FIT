@@ -19,7 +19,7 @@ signals:
     void volumeChanged(int newVolume);
 
 private:
-    int volumeLevel = 50; // Default volume (50%)
+    int volumeLevel = 50;
     QGraphicsRectItem* handle = nullptr;
 
     void updateHandlePosition();

@@ -2,7 +2,7 @@
 #include "include/entities/bullet.h"
 #include <QGraphicsScene>
 #include <QRandomGenerator>
-#define HEALTH 100
+#define HEALTH 500
 
 Enemy::Enemy() {
     defaultPixmap = QPixmap(":/images/ghost/fGhostR.png").scaled(170, 170);
@@ -67,8 +67,6 @@ void Enemy::takeDamage(int damage) {
     }
     if (healthPoint <= 0) {
         emit enemyDead();
-        // scene()->removeItem(this);
-        // this->deleteLater();
     }
 }
 
