@@ -11,7 +11,7 @@
 class FlyingEnemy : public QObject, public BaseEnemy {
     Q_OBJECT
 public:
-    FlyingEnemy();
+    FlyingEnemy(const EnemyData& data);
     ~FlyingEnemy() override;
 
     void takeDamage(int damage) override;
@@ -30,7 +30,8 @@ private slots:
     void updateAnimationFrame();
 
 private:
-    qreal healthPoint;
+    qreal healthPoints;
+    qreal currentHealthPoints;
     QTimer *attackTimer;
     QTimer *animationTimer;
     qreal xSpeed;

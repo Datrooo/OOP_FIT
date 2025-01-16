@@ -2,17 +2,17 @@
 #include "include/entities/bullet.h"
 #include <QGraphicsScene>
 #include <QRandomGenerator>
-#define HEALTH 500
 
-Enemy::Enemy() {
+Enemy::Enemy(const EnemyData& data){
     defaultPixmap = QPixmap(":/images/ghost/fGhostR.png").scaled(170, 170);
-
     defaultReversePixmap = QPixmap(":/images/ghost/fGhostL.png").scaled(170, 170);
-
     setPixmap(defaultPixmap);
+
     attackTimer = new QTimer(this);
     connect(attackTimer, &QTimer::timeout, this, &Enemy::performAttack);
-    healthPoint = HEALTH;
+
+    healthPoints = data.healthPoints;
+    currentHealthPoints = data.healthPoints;
     direction = Direction::LEFT;
     stage = 1;
     connect(this, &Enemy::secondStage, this, &Enemy::changeToSecondStage);
@@ -21,6 +21,7 @@ Enemy::Enemy() {
     xMax = 900;
     yMin = 400;
     yMax = 0;
+    setPos(data.startX, data.startY);
 }
 
 Enemy::~Enemy() {
@@ -60,12 +61,12 @@ void Enemy::shootSpreadShot() {
 }
 
 void Enemy::takeDamage(int damage) {
-    healthPoint -= damage;
-    if (stage == 1 && healthPoint <= HEALTH / 2){
+    currentHealthPoints -= damage;
+    if (stage == 1 && currentHealthPoints <= healthPoints / 2){
         stage = 2;
         emit secondStage();
     }
-    if (healthPoint <= 0) {
+    if (currentHealthPoints <= 0) {
         emit enemyDead();
     }
 }

@@ -5,8 +5,8 @@
 #include "include/entities/entitytype.h"
 #include "include/entities/player/player.h"
 
-FlyingEnemy::FlyingEnemy() {
-    healthPoint = 100;
+FlyingEnemy::FlyingEnemy(const EnemyData &data){
+    healthPoints = data.healthPoints;
     xSpeed = 3.0;
     amplitude = 50.0;
     frequency = 0.05;
@@ -29,6 +29,7 @@ FlyingEnemy::FlyingEnemy() {
     animationTimer = new QTimer(this);
     connect(animationTimer, &QTimer::timeout, this, &FlyingEnemy::updateAnimationFrame);
     animationTimer->start(100);
+    setPos(data.startX, data.startY);
 }
 
 FlyingEnemy::~FlyingEnemy() {
@@ -83,8 +84,8 @@ void FlyingEnemy::dropBomb() {
 }
 
 void FlyingEnemy::takeDamage(int damage) {
-    healthPoint -= damage;
-    if (healthPoint <= 0) {
+    healthPoints -= damage;
+    if (healthPoints <= 0) {
         emit enemyDead();
     }
 }

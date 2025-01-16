@@ -9,7 +9,7 @@
 class Enemy : public QObject, public BaseEnemy {
     Q_OBJECT
 public:
-    Enemy();
+    Enemy(const EnemyData& data);
     ~Enemy() override;
 
     void takeDamage(int damage) override;
@@ -30,7 +30,8 @@ private slots:
 private:
     char stage;
     QTimer *attackTimer;
-    qreal healthPoint;
+    qreal healthPoints;
+    qreal currentHealthPoints;
     Direction direction;
 
     QPixmap defaultPixmap;

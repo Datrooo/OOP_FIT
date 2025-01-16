@@ -6,7 +6,7 @@
 
 
 
-GameScene::GameScene() : player(new Player())/*, factory(EnemyFactory::instance())*/ {
+GameScene::GameScene() : player(new Player()) {
 
     setSceneRect(0, 0, 1072, 603);
 
@@ -44,18 +44,15 @@ GameScene::GameScene() : player(new Player())/*, factory(EnemyFactory::instance(
 
     fabric = new UniversalFabric<BaseEnemy, EnemyData>();
     registerEnemies(fabric);
-
-    enemy = dynamic_cast<Enemy*>(fabric->createObject("Ghost"));
+    addData("bossData", 600, 200, 500);
+    enemy = dynamic_cast<Enemy*>(fabric->createObject("Ghost", findData("bossData")));
     addItem(dynamic_cast<QGraphicsItem*>(enemy));
-    enemy->setPos(900, 600);
     enemy->startAttacking();
     connect(enemy, &Enemy::secondStage, this, &GameScene::spawnMouse);
 
     gameTimer = new QTimer(this);
     connect(gameTimer, &QTimer::timeout, this, &QGraphicsScene::advance);
     gameTimer->start(1000/60);
-
-
 
 
     healthBarBackground = new QGraphicsRectItem(80, 7.5, 110, 20);
@@ -156,6 +153,18 @@ GameScene::~GameScene() {
     clear();
 }
 
+void GameScene::addData(const QString & type, qreal posX, qreal posY, qreal health){
+    enemiesData[type] = (EnemyData){posX, posY, health};
+}
+
+EnemyData GameScene::findData(const QString & type){
+    auto it = enemiesData.find(type);
+    if (it != enemiesData.end()) {
+        return it->second;
+    } else {
+        throw std::invalid_argument("Type not registered: " + type.toStdString());
+    }
+}
 
 void GameScene::updateHealthBar(qreal healthPoints) {
     healthBar->setRect(healthBarBackground->boundingRect().x(), healthBarBackground->boundingRect().y(), healthPoints * 110/ MAX_HEALTH, 20);
@@ -186,10 +195,11 @@ QTimer * GameScene::getTimer() {
 }
 
 void GameScene::spawnMouse() {
-    mouse = dynamic_cast<FlyingEnemy*>(fabric->createObject("Mouse"));
+    addData("mouseData1", 100, 400, 50);
+
+    mouse = dynamic_cast<FlyingEnemy*>(fabric->createObject("Mouse", findData("mouseData1")));
     addItem(dynamic_cast<QGraphicsItem*>(mouse));
 
-    mouse->setPos(900, QRandomGenerator::global()->bounded(100, 400));
     mouse->startAttacking();
     connect(mouse, &FlyingEnemy::enemyDead, this, &GameScene::mouseDead);
     connect(mouse, &FlyingEnemy::takeDamagePlayer, player, &Player::takeDamage);

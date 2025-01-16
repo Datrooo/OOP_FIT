@@ -14,7 +14,9 @@ public:
 };
 
 struct EnemyData{
-    int xPos;
+    qreal startX;
+    qreal startY;
+    qreal healthPoints;
 };
 
 #endif // BASEENEMY_H

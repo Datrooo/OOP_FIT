@@ -10,12 +10,12 @@ class UniversalFabric {
 public:
     UniversalFabric() = default;
 
-    typedef std::function<ObjectType *()> Creator;
+    typedef std::function<ObjectType *(const ObjectData&)> Creator;
 
-    ObjectType* createObject(const QString& type) const{
+    ObjectType* createObject(const QString& type, const ObjectData &data) const{
         auto it = creators.find(type);
         if (it != creators.end()) {
-            return it->second();
+            return it->second(data);
         } else {
             throw std::invalid_argument("Type not registered: " + type.toStdString());
         }
@@ -26,7 +26,6 @@ public:
     }
 
 private:
-
     std::map<QString, Creator> creators;
 
 };

@@ -8,6 +8,7 @@
 #include "include/entities/enemy/enemyfactory.h"
 #include "include/entities/enemy/flyingenemy.h"
 #include "include/universalfabric.h"
+#include <QString>
 
 class GameScene : public QGraphicsScene {
     Q_OBJECT
@@ -16,6 +17,8 @@ public:
     ~GameScene();
     Player * getPlayer();
     QTimer * getTimer();
+    void addData(const QString & str, qreal posX, qreal posY, qreal health);
+    EnemyData findData(const QString & str);
 
 
 signals:
@@ -44,6 +47,7 @@ private:
     QGraphicsRectItem* chargeBar;
     QGraphicsRectItem* chargeBarBackground;
     QGraphicsPixmapItem* fireModeIcon;
+    std::map<const QString, EnemyData> enemiesData;
 
 };
 
