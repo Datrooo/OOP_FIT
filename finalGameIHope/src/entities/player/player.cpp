@@ -18,11 +18,11 @@ Player::Player() : jumpSpeed(-15), gravity(0.4) {
     direction = Direction::RIGHT;
     healthPoint = MAX_HEALTH;
     horizontalSpeed = 0;
-    onPlat = false;
+    onPlatform = false;
 
 
     currentFireMode = ChargingMode;
-    bul = QPixmap(":/new/prefix1/redFireRight.png");
+    bullet = QPixmap(":/new/prefix1/redFireRight.png");
     chargeTimer = new QTimer();
     charging = false;
     spammingTimer = new QTimer(this);
@@ -91,7 +91,7 @@ QList<QGraphicsItem *> Player::collidingItemsWithToleance(QGraphicsItem *parent,
 }
 
 void Player::onCollisionWithPlatform(){
-    onPlat = false;
+    onPlatform = false;
     QList<QGraphicsItem*> collidingItems = collidingItemsWithToleance(this, 15);
     for (QGraphicsItem* item : collidingItems) {
         Platform* platform = dynamic_cast<Platform*>(item);
@@ -100,7 +100,7 @@ void Player::onCollisionWithPlatform(){
                 y() <= platform->sceneBoundingRect().y() && jumpSpeed >= 0) {
                 setPos(x(), platform->sceneBoundingRect().y() - boundingRect().height());
                 jumpSpeed = 0;
-                onPlat = true;
+                onPlatform = true;
                 break;
             }
         }
@@ -219,14 +219,14 @@ void Player::moveRight() {
 }
 
 void Player::jump() {
-    if (onPlat) {
+    if (onPlatform) {
         setState(new JumpingState(this));
         jumpSpeed = -10;
     }
 }
 
 void Player::goDown(){
-    if (onPlat && y() < 500) {
+    if (onPlatform && y() < 500) {
         setState(new JumpingState(this));
         jumpSpeed = 0;
         setPos(x(), y() + 20);
@@ -254,7 +254,7 @@ EntityType Player::getEntityType() const{
 }
 
 bool Player::isOnPlatform() {
-    return onPlat;
+    return onPlatform;
 }
 
 QTimer *Player::getChargeTimer() {

@@ -72,14 +72,14 @@ public slots:
     void stopMoving();
 
 private:
-    QPixmap bul;
+    QPixmap bullet;
 
     Direction direction;
     PlayerState* state;
     qreal healthPoint;
     qreal jumpSpeed;
     qreal gravity;
-    bool onPlat;
+    bool onPlatform;
 
     qreal horizontalSpeed;
 
@@ -95,8 +95,8 @@ private:
     QTimer * chargeTimer;
     QTimer* spammingTimer;
 
-    typedef std::function<void()> frimeChanger;
-    std::unordered_map<int, frimeChanger> frameChangers;
+    typedef std::function<void()> frameChanger;
+    std::unordered_map<int, frameChanger> frameChangers;
     std::vector<QPixmap> animationFrames;
 
 };

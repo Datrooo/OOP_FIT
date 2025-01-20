@@ -13,6 +13,8 @@ public:
     VolumeSlider* getVolumeSlider();
 
 private:
+    void setTextSettings();
+    void setVolumeSlider();
     VolumeSlider *slider;
     QVector<Button*> buttons;
 };

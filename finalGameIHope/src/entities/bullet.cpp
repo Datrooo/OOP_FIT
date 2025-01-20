@@ -56,22 +56,22 @@ void Bullet::checkCollisions() {
 }
 
 void Bullet::advance(int phase) {
-    if (!phase){
-        if (scene()) {
-            QRectF sceneRect = scene()->sceneRect();
-            if (!sceneRect.contains(x(), y())) {
-                scene()->removeItem(this);
-                delete this;
-                return;
-            }
-        }
-        checkCollisions();
-    }
-    else{
+    if (phase) {
         setPos(x() + xSpeed, y() + ySpeed);
+        return;
     }
-}
 
+    if (scene()) {
+        QRectF sceneRect = scene()->sceneRect();
+        if (!sceneRect.contains(x(), y())) {
+            scene()->removeItem(this);
+            delete this;
+            return;
+        }
+    }
+
+    checkCollisions();
+}
 
 void Bullet::setPower(int power) {
     if (xSpeed >= 0){

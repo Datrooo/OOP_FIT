@@ -117,28 +117,13 @@ GameScene::~GameScene() {
         mouse->deleteLater();
         disconnect(mouse, &FlyingEnemy::enemyDead, this, &GameScene::mouseDead);
     }
-
-    if (fireModeIcon){
-        delete fireModeIcon;
-    }
-    if (healthBar) {
-        delete healthBar;
-    }
-    if (healthBarBackground) {
-        delete healthBarBackground;
-    }
-    if (chargeBar) {
-        delete chargeBar;
-    }
-    if (chargeBarBackground) {
-        delete chargeBarBackground;
-    }
-    if (player) {
-        delete player;
-    }
-    if (enemy) {
-        delete enemy;
-    }
+    delete fireModeIcon;
+    delete healthBar;
+    delete healthBarBackground;
+    delete chargeBar;
+    delete chargeBarBackground;
+    delete player;
+    delete enemy;
 
     //qDebug() << "1111";
     for (Platform* platform : platforms) {

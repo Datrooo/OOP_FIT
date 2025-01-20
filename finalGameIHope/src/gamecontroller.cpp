@@ -21,7 +21,6 @@ GameController::~GameController() {
         disconnectSettingsScene();
     }
 
-    delete view;
     delete gamescene;
     delete mainwindowscene;
     delete settingsscene;
